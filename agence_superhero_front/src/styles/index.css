@@ -1,0 +1,46 @@
+/* ---------------- Fonts ---------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ---------------- Colors ---------------- */
+
+:root {
+ --background_sign : #F5E3B6;
+ --red_wine : #8E0D3C;
+ --beige : #F5E3B6; 
+ --dark_red : #1B0F0C;
+ --hero_card_bg: #282323;
+ --gold : #BA9380;
+ --white: #FFF;
+}
+
+/* ---------------- Containers ---------------- */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("./src/assets/Images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-clip: border-box;
+  background-size: cover;
+}
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
+  padding: 0;
+}
+
+.columnContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.rowContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.alignCenter {
+  align-items: center;
+  justify-content: center;
+}

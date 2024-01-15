@@ -1,0 +1,66 @@
+/* ---------------- Containers ---------------- */
+
+.container_desktop_nav {
+  background-color: var(--dark_red);
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 7;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container_desktop_nav_links {
+  gap: 3vw;
+}
+
+.container_btns_nav_desktop {
+  gap: 1rem;
+  padding: 0 2.5vw;
+}
+
+/* ---------------- Texts ---------------- */
+
+.container_desktop_nav_links .link {
+  color: var(--beige);
+  text-decoration: none;
+  font-family: " Plus Jakarta Sans", sans-serif;
+}
+
+.container_desktop_nav_links .link:hover {
+  color: var(--red_wine);
+}
+
+/* ---------------- Images ---------------- */
+
+.desktop_logo_nav {
+  width: 5rem;
+  height: 4.5rem;
+  padding: 0 2rem;
+  margin-top: 5px;
+  margin-bottom: -5px;
+  object-fit: contain;
+  filter: contrast(0%) brightness(2000%);
+}
+
+/* ---------------- Buttons ---------------- */
+
+.bnt_desktop_nav {
+  padding: 0.5rem 1rem;
+  background-color: var(--beige);
+  border-radius: 5px;
+  border: 2px solid var(--beige);
+  text-decoration: none;
+  font-family: " Plus Jakarta Sans", sans-serif;
+  color: black;
+  font-weight: 600;
+}
+
+.bnt_desktop_nav:hover {
+  background-color: transparent;
+  transition: 0.5s;
+  color: var(--beige);
+}

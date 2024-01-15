@@ -1,13 +1,11 @@
 import { SignUp } from "../../components/Auth/SignUp/signUp";
-import NavigationBar from "../../components/Nav/nav";
 
 const SignUpPage = () => {
-    return (
-        <>
-        <NavigationBar/>
-        <SignUp/>
-        </>
-    )
-}
+  return (
+    <>
+      <SignUp />
+    </>
+  );
+};
 
 export default SignUpPage;

@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+ --background_sign : #F5E3B6;
+ --red_wine : #8E0D3C;
+ --beige : #F5E3B6; 
+ --dark_red : #1B0F0C;
+}
+
+body {
+  margin: 0;
+  min-height: 110vh;
+}
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
+}
+
+.columnContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.rowContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.alignCenter {
+  align-items: center;
+  justify-content: center;
+}

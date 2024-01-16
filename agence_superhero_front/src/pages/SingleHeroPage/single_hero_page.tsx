@@ -6,26 +6,11 @@ import {
 } from "../../components/HeroCard/hero_card";
 import "./single_hero_page.css";
 import "../../styles/index.css";
-import { apiUrl, heroesDefault } from "../../utils/constants";
+import { apiUrl, heroesDefault,PowersProps,GadgetsProps,VehicleProps,PlanetProps } from "../../utils/constants";
 import { SimpleSlider } from "../../components/Slider/slider";
 import axios from "axios";
 
-interface PowersProps {
-  name: string;
-}
 
-interface GadgetsProps {
-  name: string;
-}
-
-interface VehicleProps {
-  name: string;
-}
-
-interface PlanetProps {
-  name: string;
-  image: string;
-}
 
 interface HeroDatasProps {
   image: string;

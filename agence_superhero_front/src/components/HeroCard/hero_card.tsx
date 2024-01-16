@@ -1,6 +1,7 @@
 import BarcodeComponent from "../Barcode/barcode";
 import "./hero_card.css";
 import "../../styles/index.css";
+import { Link } from "react-router-dom";
 
 export interface HeroCardInterface {
   image: string;
@@ -16,7 +17,7 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
   id,
 }) => {
   return (
-    <section className="columnContainer container_hero_card">
+    <Link to={'/single-hero/'+id} className="columnContainer container_hero_card">
       <img src={image ?? ""} alt="" />
       <div className="container_content_hero_card columnContainer">
         <i className="i1" />
@@ -33,6 +34,6 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
         <BarcodeComponent value={id} width={66} height={20} />
         <span className="corner_styled"></span>
       </div>
-    </section>
+    </Link>
   );
 };

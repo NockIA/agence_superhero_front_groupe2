@@ -21,20 +21,20 @@ export const SignUp: React.FC = () => {
     return (
         <main className='columnContainer container_signup_form'>
             <div className='container_logo_sign'>
-                <img className='form_logo ' src="./src/assets/Images/logo.png" alt="logo" />
+                <img className='form_logo ' src="/logo.png" alt="logo" />
             </div>
-            <h2 className='title_form'>Créez un compte</h2>
-            <p className='subtitle_form'>Rejoignez notre Ligue des Inscriptions et devenez un super contributeur en partageant vos connaissances sur l'univers des super-héros. </p>
+            <h2 className='title_form'>Register</h2>
+            <p className='subtitle_form'>Join our Subscription League and become a super-contributor by sharing your knowledge of the superhero universe.</p>
             <div className='columnContainer container_inputs_field'>
                 <div className='rowContainer container_name'>
-                    <input onChange={(e) => setLastnameController(e.target.value)} placeholder='Nom' className='sign_input sign_input_name' type="text" />
-                    <input onChange={(e) => setFirstnameController(e.target.value)} placeholder='Prénom' className='sign_input sign_input_name' type="text" />
+                    <input onChange={(e) => setLastnameController(e.target.value)} placeholder='Lastname' className='sign_input sign_input_name' type="text" />
+                    <input onChange={(e) => setFirstnameController(e.target.value)} placeholder='Firstname' className='sign_input sign_input_name' type="text" />
                 </div>
                 <input onChange={(e) => setEmailController(e.target.value)} placeholder='Email' className='sign_input' type="email" />
                 <input onChange={(e) => setPasswordController(e.target.value)} placeholder='Password' className='sign_input' type="password" />
             </div>
-            <button onClick={() => signUp} className='sign_button'>S'incrire</button>
-            <p className='switch_sign_text'>Vous avez déjà un compte ? <Link to={'/signin'} className='link_sign'>Se connecter</Link></p>
+            <button onClick={() => signUp} className='sign_button'>Register</button>
+            <p className='switch_sign_text'>Already have an account? <Link to={'/signin'} className='link_sign'>Sign In</Link></p>
         </main>
     )
 }

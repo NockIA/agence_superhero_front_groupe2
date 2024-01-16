@@ -1,6 +1,7 @@
 /* ---------------- Fonts ---------------- */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
 
 /* ---------------- Colors ---------------- */
 
@@ -12,6 +13,7 @@
  --hero_card_bg: #282323;
  --gold : #BA9380;
  --white: #FFF;
+ --bg_singlehero_section : rgba(22, 13, 10, 0.90);
 }
 
 /* ---------------- Containers ---------------- */
@@ -19,7 +21,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url("./src/assets/Images/background.jpg");
+  background-image: url("/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-clip: border-box;

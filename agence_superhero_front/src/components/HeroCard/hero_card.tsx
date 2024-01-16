@@ -2,7 +2,7 @@ import BarcodeComponent from "../Barcode/barcode";
 import "./hero_card.css";
 import "../../styles/index.css";
 
-interface HeroCardInterface {
+export interface HeroCardInterface {
   image: string;
   name: string;
   team?: string;

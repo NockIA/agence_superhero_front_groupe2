@@ -1,0 +1,27 @@
+.container_tag {
+  cursor: pointer;
+}
+
+.container_tag .title_homepage {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  text-transform: uppercase;
+}
+
+.title_homepage:hover {
+    transition: .3s;
+    color: var(--gold);
+}
+
+.is_Active_Tag {
+  color: var(--gold);
+}
+.is_not_Active_Tag {
+  color: var(--white);
+}
+
+.container_tag .underline_title {
+  background-color: var(--gold);
+  height: 3px;
+  width: 100px;
+  margin-top: 0.2rem;
+}

@@ -21,7 +21,7 @@ export const SignUp: React.FC = () => {
     return (
         <main className='columnContainer container_signup_form'>
             <div className='container_logo_sign'>
-                <img className='form_logo ' src="./src/assets/Images/logo.png" alt="logo" />
+                <img className='form_logo ' src="/logo.png" alt="logo" />
             </div>
             <h2 className='title_form'>Créez un compte</h2>
             <p className='subtitle_form'>Rejoignez notre Ligue des Inscriptions et devenez un super contributeur en partageant vos connaissances sur l'univers des super-héros. </p>

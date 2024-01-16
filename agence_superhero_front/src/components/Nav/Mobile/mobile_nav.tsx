@@ -8,7 +8,7 @@ const MobileNav: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false)
     return (
         <nav className='container_mobile_nav rowContainer' >
-            <img className='logo_mobile_nav' src="./src/assets/Images/logo.png" alt="logo" />
+            <img className='logo_mobile_nav' src="/logo.png" alt="logo" />
             <span onClick={() => setIsOpen(true)} className="burger_nav material-symbols-outlined">
                 menu
             </span>

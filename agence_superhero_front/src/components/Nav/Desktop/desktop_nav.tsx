@@ -6,7 +6,7 @@ import { link, navLinks } from '../../../utils/constants';
 const DesktopNav: React.FC = () => {
     return (
         <nav className='container_desktop_nav rowContainer'>
-            <img className='desktop_logo_nav' src="./src/assets/Images/logo.png" alt="" />
+            <img className='desktop_logo_nav' src="/logo.png" alt="" />
             <div className='rowContainer container_desktop_nav_links'>
                 {navLinks.map((link: link, index :number) => (
                     <Link key={index} className='link' to={link.url}>{link.name}</Link>

@@ -32,8 +32,8 @@ export const tags: Array<TagProps> = [
   },
   {
     method: "GET",
-    request: "getpowers",
-    title: "All Powers",
+    request: "getgadgets",
+    title: "All gadgets",
   },
   {
     method: "GET",
@@ -50,49 +50,49 @@ export const tags: Array<TagProps> = [
 export const heroesDefault : Array<HeroCardInterface> = [
     {
         id: "8db666c5-0caf-475d-a67f-4e6bda55366c",
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/seed/picsum/200/300",
         name: "SUPERMAN",
         team: "Justice league member",
       },
       {
         id: "8db666c5-0caf-475d-a67f-4e6bda55366c",
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/seed/picsum/200/300",
         name: "BatMan",
         team: "Justice league member",
       },
       {
         id: "8db666c5-0caf-475d-a67f-4e6bda55366c",
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/seed/picsum/200/300",
         name: "Spider-man",
         team: "Justice league member",
       },
       {
         id: "8db666c5-0caf-475d-a67f-4e6bda55366c",
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/seed/picsum/200/300",
         name: "WolfWerine",
         team: "Justice league member",
       },
       {
         id: "8db666c5-0caf-475d-a67f-4e6bda55366c",
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/seed/picsum/200/300",
         name: "SUPERMAN",
         team: "Justice league member",
       },
       {
         id: "8db666c5-0caf-475d-a67f-4e6bda55366c",
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/seed/picsum/200/300",
         name: "BatMan",
         team: "Justice league member",
       },
       {
         id: "8db666c5-0caf-475d-a67f-4e6bda55366c",
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/seed/picsum/200/300",
         name: "Spider-man",
         team: "Justice league member",
       },
       {
         id: "8db666c5-475d-a67f-4e6bda55366c",
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/seed/picsum/200/300",
         name: "WolfWerine",
         team: "Justice league member",
       },

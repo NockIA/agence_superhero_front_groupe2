@@ -7,7 +7,52 @@
 }
 
 .container_single_hero_page .header_single {
-  gap: 1rem;
+  gap: 3rem;
+  background-color: var(--bg_singlehero_section);
+  padding: 2rem;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  position: relative;
+}
+
+.container_single_hero_page .separation_section_1 {
+  background-color: var(--bg_singlehero_section);
+  height: 50px;
+  width: 100%;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  position: absolute;
+  left: 0.5px;
+  bottom: -50px;
+}
+
+.container_single_hero_page .separation_section_2_top {
+  background-color: var(--bg_singlehero_section);
+  height: 50px;
+  width: 100%;
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+  position: absolute;
+  left: 0px;
+  top: -50px;
+}
+
+.container_single_hero_page .separation_section_2_bottom {
+  background-color: var(--bg_singlehero_section);
+  height: 50px;
+  width: 100%;
+  clip-path: polygon(0 0, 0 100%, 100% 0);
+  position: absolute;
+  left: 0px;
+  bottom: -50px;
+}
+
+.container_single_hero_page .separation_section_3_top {
+  background-color: var(--bg_singlehero_section);
+  height: 50px;
+  width: 100%;
+  clip-path: polygon(100% 100%, 0 100%, 100% 0);
+  position: absolute;
+  left: 0.5px;
+  top: -50px;
 }
 
 .header_single h1 {
@@ -21,6 +66,13 @@
 
 .container_section_single {
   gap: 2rem;
+  position: relative;
+  padding: 2rem;
+  background-color: var(--bg_singlehero_section);
+}
+
+.container_section_single h2 {
+  font-family: "Rampart One", sans-serif;
 }
 
 .container_section_single .container_section_global {
@@ -37,9 +89,9 @@
 
 .container_single_img .border {
   display: block;
-  background-color: var(--dark_red);
-  height: 440px;
-  width: 350px;
+  background-color: var(--red_wine);
+  height: 320px;
+  width: 260px;
   clip-path: polygon(
     5% 0,
     100% 0,
@@ -54,49 +106,91 @@
 
 .single_hero_image {
   object-fit: fill;
-  width: 95%;
-  height: 96%;
+  width: 96%;
+  height: 97%;
   position: absolute;
-  top: 2%;
-  left: 2.5%;
+  top: 1.6%;
+  left: 2%;
   object-fit: cover;
   clip-path: polygon(
     4% 0,
     100% 0,
     100% 30%,
-    100% 96%,
-    96% 100%,
+    100% 95%,
+    95% 100%,
     30% 100%,
     0 100%,
     0 4%
   );
 }
 
-.container_section_global .container_content_section {
+.container_content_section {
   justify-content: space-between;
+  height: 20rem;
+  flex-wrap: wrap;
 }
 
 .container_content_section .container_cell_datas_hero {
-    gap: 1rem;
+  gap: 1rem;
 }
 
 .container_cell_datas_hero h5 {
-    font-weight: 900;
-    font-size: 16px;
+  font-weight: 900;
+  font-size: 16px;
 }
 
 .container_cell_datas_hero p {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .container_team_members {
-    gap: 2rem;
-    width: 100vw;
-    overflow-y: scroll;
+  gap: 2rem;
 }
 
 .container_team {
-    gap: 3rem;
+  gap: 3rem;
+  position: relative;
+  background-color: var(--bg_singlehero_section);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 2rem;
+}
+.container_team h2 {
+  font-family: "Rampart One", sans-serif;
+}
+
+.delete_hero_btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--red_wine);
+  padding: 0.5rem 1rem;
+  padding-bottom: 0.65rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: var(--white);
+  display: flex;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 2px 2px 4px rgba(177, 177, 177, 0.15);
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.delete_hero_btn:hover {
+  transform: translateX(5px);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.delete_hero_btn:not(:hover) {
+  transform: translateX(0px);
+  transition: 0.5s;
+}
+
+.container_content_header_single {
+  gap: 1rem;
+  position: relative;
 }

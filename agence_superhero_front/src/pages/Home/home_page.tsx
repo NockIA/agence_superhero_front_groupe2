@@ -56,7 +56,7 @@ const HomePage = () => {
           <span className="material-symbols-outlined">search</span>
           <input
             className="search_bar"
-            placeholder="Rechercher un superhéro"
+            placeholder="Enter your hero name..."
             type="search"
             name="search"
             value={searchContent}

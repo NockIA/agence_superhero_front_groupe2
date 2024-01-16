@@ -8,8 +8,8 @@ export interface link {
 }
 
 export const navLinks: link[] = [
-  { name: "Accueil", url: "/" },
-  { name: "Héros", url: "/heros" },
+  { name: "Home", url: "/" },
+  { name: "Heroes", url: "/heroes" },
 ];
 
 export interface TagProps {

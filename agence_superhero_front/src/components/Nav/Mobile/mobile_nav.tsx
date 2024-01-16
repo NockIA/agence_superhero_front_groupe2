@@ -19,8 +19,8 @@ const MobileNav: React.FC = () => {
                         <Link key={index} className='link_mobile' to={link.url}>{link.name}</Link>
                     ))}
                 </ul>
-                <Link className='btn_sign_mobile' to={'/signin'}>Se connecter</Link>
-                <Link className='btn_sign_mobile' to={'/signup'}>S'inscrire</Link>
+                <Link className='btn_sign_mobile' to={'/signin'}>Login</Link>
+                <Link className='btn_sign_mobile' to={'/signup'}>Register</Link>
             </div>
             }
 

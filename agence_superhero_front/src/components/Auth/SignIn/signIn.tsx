@@ -31,15 +31,15 @@ export const SignIn: React.FC = () => {
             <div className='container_logo_sign'>
                 <img className='form_logo ' src="/logo.png" alt="logo" />
             </div>
-            <h2 className='title_form'>Se connecter</h2>
-            <p className='subtitle_form'>Rejoignez notre Ligue des Inscriptions et devenez un super contributeur en partageant vos connaissances sur l'univers des super-héros. </p>
+            <h2 className='title_form'>Login</h2>
+            <p className='subtitle_form'>Join our Subscription League and become a super-contributor by sharing your knowledge of the superhero universe. </p>
             <div className='columnContainer container_inputs_field'>
                 <input required onChange={(e) => { setEmailController(e.target.value) }} placeholder='Email' className='sign_input' type="email" />
                 <input required onChange={(e) => { setPasswordController(e.target.value) }} placeholder='Password' className='sign_input' type="password" />
             </div>
             {errorMessage && <p className='text_sign_error'>{errorMessage}</p>}
-            <button onClick={() => signIn} className='sign_button'>Se connecter</button>
-            <p className='switch_sign_text'>Vous n'avez pas déjà un compte ? <Link to={'/signup'} className='link_sign'>S'inscrire</Link></p>
+            <button onClick={() => signIn} className='sign_button'>Login</button>
+            <p className='switch_sign_text'>Don't you already have an account? <Link to={'/signup'} className='link_sign'>Sign Up</Link></p>
         </main>
     )
 }

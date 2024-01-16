@@ -13,8 +13,8 @@ const DesktopNav: React.FC = () => {
                 ))}
             </div>
             <div className='rowContainer container_btns_nav_desktop'>
-                <Link className='bnt_desktop_nav' to={'/signin'}>Se connecter</Link>
-                <Link className='bnt_desktop_nav' to={'/signup'}>S'inscrire</Link>
+                <Link className='bnt_desktop_nav' to={'/signin'}>Login</Link>
+                <Link className='bnt_desktop_nav' to={'/signup'}>Register</Link>
             </div>
         </nav>
     )

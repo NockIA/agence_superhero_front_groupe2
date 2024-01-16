@@ -9,7 +9,7 @@ export interface link {
 
 export const navLinks: link[] = [
   { name: "Home", url: "/" },
-  { name: "Heroes", url: "/heroes" },
+  { name: "Create your hero", url: "/create-hero" },
 ];
 
 export interface TagProps {

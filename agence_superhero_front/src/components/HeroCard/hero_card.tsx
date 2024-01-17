@@ -4,26 +4,28 @@ import "../../styles/index.css";
 import { Link } from "react-router-dom";
 
 export interface HeroCardInterface {
-  image: string;
+  linkImage: string;
   name: string;
+  description? : string
   team?: string;
   id: string;
 }
 
 export const HeroCard: React.FC<HeroCardInterface> = ({
-  image,
+  linkImage,
   name,
   team,
+  description,
   id,
 }) => {
   return (
     <Link to={'/single-hero/'+id} className="columnContainer container_hero_card">
-      <img src={image ?? ""} alt="" />
+      <img src={linkImage ?? ""} alt="" />
       <div className="container_content_hero_card columnContainer">
         <i className="i1" />
         <h2>{name}</h2>
         <i className="i2" />
-        <h5>{team ?? "No team"}</h5>
+        <h5>{(team || description) ?? "No team"}</h5>
         <span className="separation"></span>
         <i className="i3" />
         <article className="rowContainer container_id_herocard">

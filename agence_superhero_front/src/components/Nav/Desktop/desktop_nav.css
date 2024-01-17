@@ -62,5 +62,6 @@
 .bnt_desktop_nav:hover {
   background-color: transparent;
   transition: 0.5s;
+  cursor: pointer;
   color: var(--beige);
 }

@@ -13,7 +13,7 @@ const BarcodeComponent: React.FC<BarcodeProps> = ({
 }) => {
   const bars: JSX.Element[] = [];
 
-  const binarySequence = value
+  const binarySequence = value.toString()
     .split("")
     .map((char) => char.charCodeAt(0).toString(2).padStart(8, "0"))
     .join("");

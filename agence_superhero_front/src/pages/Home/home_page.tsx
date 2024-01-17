@@ -10,11 +10,13 @@ import axios from "axios";
 import { apiUrl, heroesDefault } from "../../utils/constants";
 import { tags } from "../../utils/constants";
 import { CategoryComp } from "../../components/CategoryComp/category_comp";
+import AuthService from "../../services/auth_services";
 
 const HomePage = () => {
   const handleTagClick = (newHeroes: Array<HeroCardInterface>) => {
     setHeroes(newHeroes);
   };
+  const _authService  = new AuthService;
   const [searchContent, setSearchContent] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [activeTag, setActiveTag] = useState<string | null>(tags[0].title);
@@ -38,6 +40,8 @@ const HomePage = () => {
   };
 
   useEffect(() => {
+    console.log( _authService.getCookie());
+   
     // axios
     //   .get(apiUrl + "getSuperHeros")
     //   .then((response) => {
@@ -70,7 +74,6 @@ const HomePage = () => {
               tags.map((tag, index: number) => (
                 <CategoryComp
                   key={index}
-                  method={tag.method}
                   title={tag.title}
                   request={tag.request}
                   isActive={tag.title === activeTag}
@@ -86,9 +89,10 @@ const HomePage = () => {
                 <HeroCard
                   key={index}
                   id={hero.id}
-                  image={hero.image}
+                  linkImage={hero.linkImage}
                   name={hero.name}
                   team={hero.team}
+                  description={hero.description}
                 />
               ))
             ) : filteredSearchHeroes.length > 0 ? (
@@ -96,9 +100,10 @@ const HomePage = () => {
                 <HeroCard
                   key={index}
                   id={hero.id}
-                  image={hero.image}
+                  linkImage={hero.linkImage}
                   name={hero.name}
                   team={hero.team}
+                  description={hero.description}
                 />
               ))
             ) : (

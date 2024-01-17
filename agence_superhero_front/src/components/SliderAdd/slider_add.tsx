@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../Slider/slider.css";
 import "../../styles/index.css";
 import "./slider_add.css";
+import axios from "axios";
+import { apiUrl } from "../../utils/constants";
 
 interface ObjectProps {
   id: string;
@@ -11,12 +13,15 @@ interface ObjectProps {
 }
 
 interface SliderProps {
-  slides: Array<ObjectProps>;
+  slides: Array<ObjectProps>,
+  url : string
 }
 
-export const SliderAdd: React.FC<SliderProps> = ({ slides }) => {
-  const [newContentName, setNewContentName] = useState({});
-  const [newContentDesc, setNewContentDesc] = useState({});
+export const SliderAdd: React.FC<SliderProps> = ({ slides , url }) => {
+  const [newContentName, setNewContentName] = useState("");
+  const [newContentDesc, setNewContentDesc] = useState("");
+  const [newContentImage, setNewContentImg] = useState("");
+  const [errMsg, setErrMsg] = useState("");
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -28,6 +33,22 @@ export const SliderAdd: React.FC<SliderProps> = ({ slides }) => {
   const prevSlide = () => {
     const newIndex = (currentIndex - 1 + slides.length) % slides.length;
     setCurrentIndex(newIndex);
+  };
+
+  const Continue = () => {
+    if (newContentName != "") {
+      if (
+        newContentName.trim() === "" ||
+        newContentDesc.trim() === "" ||
+        newContentImage.trim() === ""
+      ) {
+        axios.post(apiUrl+url , {name : newContentName , desc :newContentDesc , image :newContentImage}).then()
+      } else {
+        setErrMsg("All inputs must be filled");
+      }
+    }
+
+    console.log(newContentDesc);
   };
 
   return (
@@ -69,10 +90,25 @@ export const SliderAdd: React.FC<SliderProps> = ({ slides }) => {
           <p>Or</p>
           <span></span>
         </div>
-        <input type="text" name="newInput" placeholder="Name" />
-        <input type="text" name="newInput" placeholder="Description"/>
-        <input type="text" name="newInput" placeholder="Image"/>
-        <button>Continue</button>
+        <input
+          onChange={(e) => setNewContentName(e.target.value)}
+          type="text"
+          name="newInput"
+          placeholder="Name"
+        />
+        <input
+          onChange={(e) => setNewContentDesc(e.target.value)}
+          type="text"
+          name="newInput"
+          placeholder="Description"
+        />
+        <input
+          onChange={(e) => setNewContentImg(e.target.value)}
+          type="text"
+          name="newInput"
+          placeholder="Image"
+        />
+        <button onClick={Continue}>Continue</button>
       </div>
     </main>
   );

@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../../../styles/index.css";
 import "./desktop_nav.css";
-import { link, navLinks } from "../../../utils/constants";
 import AuthService from "../../../services/auth_services";
 import { useEffect, useState } from "react";
+import { navLinks, link } from "../../../utils/links";
 
 const DesktopNav: React.FC = () => {
   const _authService = new AuthService();
@@ -18,8 +18,8 @@ const DesktopNav: React.FC = () => {
   }, [_authService.getCookie()]);
 
   const Logout = () => {
+    navigate("/signin");
     _authService.deleteCookie();
-    navigate('/signin')
   };
   return (
     <nav className="container_desktop_nav rowContainer">

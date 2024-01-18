@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
-import { apiUrl } from "../../utils/constants";
 import "./category_comp.css";
 import "../../styles/index.css";
 import { HeroCardInterface } from "../HeroCard/hero_card";
 import AuthService from "../../services/auth_services";
+import { apiUrl } from "../../utils/api";
 
 export interface CategoryCompProps {
   request: string;

@@ -1,18 +1,19 @@
 import "./mobile_nav.css";
 import "../../../styles/index.css";
-import { navLinks } from "../../../utils/constants";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AuthService from "../../../services/auth_services";
+import { navLinks, link } from "../../../utils/links";
 
 const MobileNav: React.FC = () => {
   const _authService = new AuthService();
   const [isConnected, setIsConnected] = useState(false);
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  
   const Logout = () => {
-    _authService.deleteCookie();
     navigate("/signin");
+    _authService.deleteCookie();
   };
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const MobileNav: React.FC = () => {
             close
           </span>
           <ul className="columnContainer container_mobile_links">
-            {navLinks.map((link, index: number) => (
+            {navLinks.map((link: link, index: number) => (
               <Link key={index} className="link_mobile" to={link.url}>
                 {link.name}
               </Link>

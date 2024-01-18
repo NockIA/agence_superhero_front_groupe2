@@ -1,15 +1,24 @@
 import axios from "axios";
-import { apiUrl } from "../utils/constants";
+import { apiUrl } from "../utils/api";
 
 class AuthService {
   setCookie(value: string) {
     const expirationDate = new Date();
     expirationDate.setDate(expirationDate.getDate() + 1);
+
+    const cookieOptions = [
+      `expires=${expirationDate.toUTCString()}`,
+      "path=/",
+      "Secure",
+    ];
+
     const cookieString = `jwt=${encodeURIComponent(
       value
-    )}; expires=${expirationDate.toUTCString()}; path=/ ; SameSite=None; Secure`;
+    )}; ${cookieOptions.join("; ")}`;
+
     document.cookie = cookieString;
   }
+
   getCookie() {
     const name = "jwt" + "=";
     const decodedCookie = decodeURIComponent(document.cookie);
@@ -28,13 +37,16 @@ class AuthService {
   deleteCookie() {
     const cookieString =
       "jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=None; Secure";
-    document.cookie = cookieString;
-    axios.post(apiUrl + "logout", {
-      headers: {
-        Authorization: "Bearer " + this.getCookie(),
-        "Content-Type": "application/json",
-      },
-    });
+    axios
+      .post(apiUrl + "logout", {
+        headers: {
+          Authorization: "Bearer " + this.getCookie(),
+          "Content-Type": "application/json",
+        },
+      })
+      .then(() => {
+        document.cookie = cookieString;
+      });
   }
 }
 export default AuthService;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./slider.css";
-import "../../styles/index.css";
+import "../../../styles/index.css";
 
 interface SliderProps {
   slides: JSX.Element[];

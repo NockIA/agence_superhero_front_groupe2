@@ -6,8 +6,9 @@ import {
 } from "../../components/HeroCard/hero_card";
 import "./single_hero_page.css";
 import "../../styles/index.css";
-import { apiUrl, heroesDefault,PowersProps,GadgetsProps,VehicleProps,PlanetProps } from "../../utils/constants";
-import { SimpleSlider } from "../../components/Slider/slider";
+import {PowersProps,GadgetsProps,VehicleProps,PlanetProps } from "../../utils/interfaces";
+import { apiUrl } from "../../utils/api";
+import { SimpleSlider } from "../../components/Sliders/SliderTeamMembers/slider";
 import axios from "axios";
 
 
@@ -30,7 +31,7 @@ interface HeroDatasProps {
 const SingleHeroPage = () => {
   const [idHero, setIdHero] = useState("");
   const [heroDatas, setHeroDatas] = useState<HeroDatasProps>();
-  const team = heroesDefault;
+  const team = [];
   useEffect(() => {
     const path = document.location.href.split("/");
     setIdHero(path[path.length - 1]);
@@ -114,37 +115,37 @@ const SingleHeroPage = () => {
                   id="dnjefnjfe"
                   team="justice league"
                   name="Superman"
-                  image="https://picsum.photos/id/237/200/300"
+                  linkImage="https://picsum.photos/id/237/200/300"
                 />,
                 <HeroCard
                   id="dnjefnjfe"
                   team="justice league"
                   name="Superman"
-                  image="https://picsum.photos/id/237/200/300"
+                  linkImage="https://picsum.photos/id/237/200/300"
                 />,
                 <HeroCard
                   id="dnjefnjfe"
                   team="justice league"
                   name="Superman"
-                  image="https://picsum.photos/id/237/200/300"
+                  linkImage="https://picsum.photos/id/237/200/300"
                 />,
                 <HeroCard
                   id="dnjefnjfe"
                   team="justice league"
                   name="Superman"
-                  image="https://picsum.photos/id/237/200/300"
+                  linkImage="https://picsum.photos/id/237/200/300"
                 />,
                 <HeroCard
                   id="dnjefnjfe"
                   team="justice league"
                   name="Superman"
-                  image="https://picsum.photos/id/237/200/300"
+                  linkImage="https://picsum.photos/id/237/200/300"
                 />,
                 <HeroCard
                   id="dnjefnjfe"
                   team="justice league"
                   name="Superman"
-                  image="https://picsum.photos/id/237/200/300"
+                  linkImage="https://picsum.photos/id/237/200/300"
                 />,
               ]}
             />

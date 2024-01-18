@@ -3,8 +3,9 @@ import '../../../styles/index.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
-import { apiUrl } from '../../../utils/constants'
+
 import AuthService from '../../../services/auth_services'
+import { apiUrl } from '../../../utils/api'
 
 export const SignIn: React.FC = () => {
     const _authService = new AuthService();

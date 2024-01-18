@@ -7,10 +7,10 @@ import "./home_page.css";
 import "../../styles/index.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { apiUrl, heroesDefault } from "../../utils/constants";
-import { tags } from "../../utils/constants";
 import { CategoryComp } from "../../components/CategoryComp/category_comp";
 import AuthService from "../../services/auth_services";
+import { tags } from "../../utils/tags";
+import { apiUrl } from "../../utils/api";
 
 const HomePage = () => {
   const handleTagClick = (newHeroes: Array<HeroCardInterface>) => {
@@ -23,7 +23,7 @@ const HomePage = () => {
   const [filteredSearchHeroes, setFilteredSearchHeroes] = useState<
     Array<HeroCardInterface>
   >([]);
-  const [heroes, setHeroes] = useState<Array<HeroCardInterface>>(heroesDefault);
+  const [heroes, setHeroes] = useState<Array<HeroCardInterface>>([]);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value.toLowerCase();

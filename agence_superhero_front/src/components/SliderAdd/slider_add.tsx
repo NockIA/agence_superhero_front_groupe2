@@ -1,27 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Slider/slider.css";
 import "../../styles/index.css";
 import "./slider_add.css";
 import axios from "axios";
 import { apiUrl } from "../../utils/constants";
+import AuthService from "../../services/auth_services";
 
 interface ObjectProps {
   id: string;
   name: string;
-  image: string;
-  desc: string;
+  linkImage: string;
+  description: string;
 }
 
 interface SliderProps {
-  slides: Array<ObjectProps>,
-  url : string
+  postUrl: string;
+  getUrl: string;
+  sentBackId: Function;
+  closeSlide?: Function;
+  isCity?:boolean
 }
 
-export const SliderAdd: React.FC<SliderProps> = ({ slides , url }) => {
-  const [newContentName, setNewContentName] = useState("");
-  const [newContentDesc, setNewContentDesc] = useState("");
-  const [newContentImage, setNewContentImg] = useState("");
+export const SliderAdd: React.FC<SliderProps> = ({
+  getUrl,
+  postUrl,
+  sentBackId,
+  closeSlide,
+  isCity
+}) => {
+  const _authService = new AuthService();
+  const [newContentName, setNewContentName] = useState<string>("");
+  const [newContentDesc, setNewContentDesc] = useState<string>("");
+  const [newContentImage, setNewContentImg] = useState<string>("");
   const [errMsg, setErrMsg] = useState("");
+  const [slides, setSlides] = useState<Array<ObjectProps>>([]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -35,20 +47,60 @@ export const SliderAdd: React.FC<SliderProps> = ({ slides , url }) => {
     setCurrentIndex(newIndex);
   };
 
-  const Continue = () => {
-    if (newContentName != "") {
-      if (
-        newContentName.trim() === "" ||
-        newContentDesc.trim() === "" ||
-        newContentImage.trim() === ""
-      ) {
-        axios.post(apiUrl+url , {name : newContentName , desc :newContentDesc , image :newContentImage}).then()
+  const fetchData = async () => {
+    await axios
+      .get(apiUrl + getUrl, {
+        headers: {
+          Authorization: "Bearer " + _authService.getCookie(),
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setSlides(response.data);
+      })
+      .catch((err) => {
+        setErrMsg(err.message);
+      });
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const Continue = async () => {
+    console.log(newContentName, newContentDesc, newContentImage);
+
+    if (newContentName !== "") {
+      if (newContentDesc.trim() !== "" && newContentImage.trim() !== "") {
+        try {
+          await axios
+            .post(
+              apiUrl + postUrl,
+              {
+                name: newContentName,
+                description: newContentDesc,
+                linkImage: newContentImage,
+              },
+              {
+                headers: {
+                  Authorization: "Bearer " + _authService.getCookie(),
+                  "Content-Type": "application/json",
+                },
+              }
+            )
+            .then(() => {
+              fetchData();
+              setNewContentName("");
+              setNewContentImg("");
+              setNewContentDesc("");
+            });
+        } catch (error) {}
       } else {
         setErrMsg("All inputs must be filled");
       }
+    } else {
+      console.log(slides[currentIndex].id);
+      sentBackId(slides[currentIndex].id);
     }
-
-    console.log(newContentDesc);
   };
 
   return (
@@ -69,7 +121,7 @@ export const SliderAdd: React.FC<SliderProps> = ({ slides , url }) => {
           >
             {slides.map((slide, index) => (
               <div key={index} className="slide_add">
-                <img src={slide.image} alt="image" />
+                <img src={slide.linkImage} alt="image" />
               </div>
             ))}
           </div>
@@ -83,32 +135,36 @@ export const SliderAdd: React.FC<SliderProps> = ({ slides , url }) => {
         </span>
       </div>
       <div className="columnContainer container_slider_panel">
-        <h1>{slides[currentIndex].name}</h1>
-        <h5>{slides[currentIndex].desc}</h5>
+        {slides.length > 0 &&slides[currentIndex].name && <h1>{slides[currentIndex].name}</h1>}
+        {slides.length > 0 && <h5>{slides[currentIndex].description}</h5>}
         <div className="rowContainer container_separation_add_slider">
           <span></span>
           <p>Or</p>
           <span></span>
         </div>
         <input
+          value={newContentName}
           onChange={(e) => setNewContentName(e.target.value)}
           type="text"
           name="newInput"
           placeholder="Name"
         />
         <input
+          value={newContentDesc}
           onChange={(e) => setNewContentDesc(e.target.value)}
           type="text"
           name="newInput"
           placeholder="Description"
         />
         <input
+          value={newContentImage}
           onChange={(e) => setNewContentImg(e.target.value)}
           type="text"
           name="newInput"
           placeholder="Image"
         />
-        <button onClick={Continue}>Continue</button>
+        <button onClick={Continue}>{newContentName ? 'Create':'Add'}</button>
+        {closeSlide && <button onClick={()=>closeSlide(true)}>Continue</button>}
       </div>
     </main>
   );

@@ -49,10 +49,6 @@ export const tags: Array<TagProps> = [
     title: "All characters",
   },
   {
-    request: "getSuperHerosByUser",
-    title: "My characters",
-  },
-  {
     request: "gadgets",
     title: "All gadgets",
   },

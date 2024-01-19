@@ -41,7 +41,7 @@ const AddHeroPage: React.FC = () => {
 
   return (
     <>
-      {/* <NavigationBar /> */}
+      <NavigationBar />
       {planetInfos === null && (
         <Slider
           getUrl="plannets"
@@ -98,7 +98,7 @@ const AddHeroPage: React.FC = () => {
           sentBackId={(id: number) => handleSetArrayId(setCityInfos, id)}
           renderCard={(hero: HeroCardInterface) => (
             <HeroCard
-              id={hero.id?.toString() || hero.uuid}
+              id={hero.id?.toString() || hero.UUID}
               name={hero.name}
               description={hero.description}
             />
@@ -112,7 +112,7 @@ const AddHeroPage: React.FC = () => {
           sentBackId={(id: number) => handleSetId(setTeamInfo, id)}
           renderCard={(hero: HeroCardInterface) => (
             <HeroCard
-              id={hero.id?.toString() || hero.uuid}
+              id={hero.id?.toString() || hero.UUID}
               name={hero.name}
               description={hero.description}
             />

@@ -34,7 +34,7 @@
 }
 
 .button_slider {
-    background-color: var(--dark_red);
+    background-color: var(--red_wine);
     border-radius: 999px;
     display: flex;
     padding: 1rem;
@@ -68,3 +68,4 @@
     transition: .5s;
     cursor: pointer;
 }
+

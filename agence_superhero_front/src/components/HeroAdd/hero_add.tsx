@@ -89,8 +89,6 @@ export const HeroAdd: React.FC<HeroAddProps> = ({
               }
             );
           });
-
-          
           gadgetsIds.forEach((currentGadgetId: number) => {
             axios.post(
               apiUrl + "linkGadgetToHero",
@@ -106,8 +104,6 @@ export const HeroAdd: React.FC<HeroAddProps> = ({
               }
             );
           });
-
-            
           powersIds.forEach((currentPowerId: number) => {
             axios.post(
               apiUrl + "linkPowerToHero",
@@ -123,9 +119,6 @@ export const HeroAdd: React.FC<HeroAddProps> = ({
               }
             );
           });
-
-
-
           navigate("/");
         })
         .catch((err: any) => {
@@ -136,14 +129,19 @@ export const HeroAdd: React.FC<HeroAddProps> = ({
     }
   };
   return (
-    <section className="rowContainer">
-      <img
-        src={imgCtrl != "" ? imgCtrl : "./src/assets/default_hero.png"}
-        alt="superhero_img"
-      />
-      <article className="columnContainer">
+    <section className="rowContainer container_hero_add">
+      <div className="columnContainer container_single_img_add">
+        <span className="border"></span>
+        <img
+          className="img_hero single_hero_image_add"
+          src={imgCtrl != "" ? imgCtrl : "./src/assets/default_hero.png"}
+          alt="superhero_img"
+        />
+      </div>
+
+      <article className="columnContainer container_form_panel">
         <h1>Add your Superhero</h1>
-        <div className="columnContainer">
+        <div className="columnContainer container_inputs_add_hero">
           <input
             required
             type="text"

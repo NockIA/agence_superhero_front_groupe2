@@ -9,7 +9,7 @@ export interface HeroCardInterface {
   description?: string;
   team?: string;
   id?: string;
-  uuid?:string;
+  UUID?:string;
   isHero?: boolean;
 }
 
@@ -19,14 +19,16 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
   team,
   description,
   id,
-  uuid = "",
+  UUID,
   isHero,
 }) => {
+  console.log(UUID);
+  
   return (
     <>
       {isHero ? (
         <Link
-          to={"/single-hero/" + id}
+          to={"/single-hero/" + UUID}
           className="columnContainer container_hero_card"
         >
           <img src={linkImage ?? "./src/assets/no_image.png"} alt="" />
@@ -42,7 +44,7 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
               <p className="id_herocard">{id}</p>
             </article>
             <i className="i4" />
-            <BarcodeComponent value={id || uuid} width={66} height={20} />
+            <BarcodeComponent value={id || UUID ||""} width={66} height={20} />
             <span className="corner_styled"></span>
           </div>
         </Link>
@@ -61,7 +63,7 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
               <p className="id_herocard">{id}</p>
             </article>
             <i className="i4" />
-            <BarcodeComponent value={id || uuid} width={66} height={20} />
+            <BarcodeComponent value={id || UUID ||""} width={66} height={20} />
             <span className="corner_styled"></span>
           </div>
         </div>

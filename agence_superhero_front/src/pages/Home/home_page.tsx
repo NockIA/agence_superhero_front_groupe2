@@ -13,10 +13,7 @@ import { tags } from "../../utils/tags";
 import { apiUrl } from "../../utils/api";
 
 const HomePage = () => {
-  const handleTagClick = (newHeroes: Array<HeroCardInterface>) => {
-    setHeroes(newHeroes);
-  };
-  const _authService  = new AuthService;
+  const _authService = new AuthService();
   const [searchContent, setSearchContent] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [activeTag, setActiveTag] = useState<string | null>(tags[0].title);
@@ -39,17 +36,32 @@ const HomePage = () => {
     }
   };
 
+  const handleTagClick = ({
+    data,
+    title,
+  }: {
+    data: Array<HeroCardInterface>;
+    title: string;
+  }) => {
+    setHeroes(data);
+    setActiveTag(title);
+  };
+
   useEffect(() => {
-    console.log( _authService.getCookie());
-   
-    // axios
-    //   .get(apiUrl + "getSuperHeros")
-    //   .then((response) => {
-    //     setHeroes(response.data);
-    //   })
-    //   .catch((err) => {
-    //     setErrorMsg(err.message);
-    //   });
+    console.log(_authService.getCookie());
+    axios
+      .get(apiUrl + "allHeros", {
+        headers: {
+          Authorization: "Bearer " + _authService.getCookie(),
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setHeroes(response.data);
+      })
+      .catch((err) => {
+        setErrorMsg(err.message);
+      });
   }, []);
 
   return (
@@ -67,7 +79,6 @@ const HomePage = () => {
             onChange={handleSearch}
           />
         </div>
-
         <section className="columnContainer">
           <article className="rowContainer container_tags alignCenter">
             {tags.length > 0 &&
@@ -78,7 +89,6 @@ const HomePage = () => {
                   request={tag.request}
                   isActive={tag.title === activeTag}
                   onUpdateHeroes={handleTagClick}
-                  onClick={() => setActiveTag(tag.title)}
                 />
               ))}
           </article>
@@ -88,7 +98,8 @@ const HomePage = () => {
               heroes.map((hero, index: number) => (
                 <HeroCard
                   key={index}
-                  id={hero.id || hero.uuid}
+                  isHero={activeTag == "All characters"}
+                  id={hero.id || hero.UUID}
                   linkImage={hero.linkImage}
                   name={hero.name}
                   team={hero.team}
@@ -98,8 +109,9 @@ const HomePage = () => {
             ) : filteredSearchHeroes.length > 0 ? (
               filteredSearchHeroes.map((hero, index: number) => (
                 <HeroCard
+                  isHero={activeTag == "All characters"}
                   key={index}
-                  id={hero.id}
+                  id={hero.id || hero.UUID}
                   linkImage={hero.linkImage}
                   name={hero.name}
                   team={hero.team}

@@ -10,8 +10,7 @@ export interface CategoryCompProps {
   request: string;
   title: string;
   isActive: boolean;
-  onClick: Function;
-  onUpdateHeroes: (newHeroes: Array<HeroCardInterface>) => void;
+  onUpdateHeroes: (newHeroes: { data: Array<HeroCardInterface>; title: string }) => void;
 }
 
 export const CategoryComp: React.FC<CategoryCompProps> = ({
@@ -28,7 +27,7 @@ export const CategoryComp: React.FC<CategoryCompProps> = ({
         'Content-Type':'application/json'
       }
     }).then((response) => {
-      onUpdateHeroes(response.data);
+      onUpdateHeroes({ data: response.data, title });
     });
   };
 

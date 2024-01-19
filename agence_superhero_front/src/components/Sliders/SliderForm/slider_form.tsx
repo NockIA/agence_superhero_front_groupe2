@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import "../SliderTeamMembers/slider.css";
 import "../../../styles/index.css";
 import "./slider_form.css";
 import axios from "axios";
@@ -181,7 +180,7 @@ const Slider: React.FC<SliderProps> = ({
         {slides.length > 0 && <h5>{slides[currentIndex].description}</h5>}
         <div className="rowContainer container_separation_add_slider">
           <span></span>
-          <p>Add a {getUrl}</p>
+          <p>Add a {getUrl[getUrl.length-1] === "s" ? getUrl.slice(0,-1) : getUrl}</p>
           <span></span>
         </div>
         <input
@@ -192,7 +191,7 @@ const Slider: React.FC<SliderProps> = ({
           placeholder="Name"
         />
         {getUrl === "city" && (
-          <select onChange={(e) => setSelectedPlanet(e.target.value)}>
+          <select className="select_menu" onChange={(e) => setSelectedPlanet(e.target.value)}>
             {planets.map((planet: PlanetProps, index: number) => (
               <option key={index} value={planet.id}>
                 {planet.name}

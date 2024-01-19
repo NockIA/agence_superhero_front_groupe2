@@ -8,7 +8,8 @@ export interface HeroCardInterface {
   name: string;
   description?: string;
   team?: string;
-  id: string;
+  id?: string;
+  uuid?:string;
   isHero?: boolean;
 }
 
@@ -18,6 +19,7 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
   team,
   description,
   id,
+  uuid = "",
   isHero,
 }) => {
   return (
@@ -40,7 +42,7 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
               <p className="id_herocard">{id}</p>
             </article>
             <i className="i4" />
-            <BarcodeComponent value={id} width={66} height={20} />
+            <BarcodeComponent value={id || uuid} width={66} height={20} />
             <span className="corner_styled"></span>
           </div>
         </Link>
@@ -59,7 +61,7 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
               <p className="id_herocard">{id}</p>
             </article>
             <i className="i4" />
-            <BarcodeComponent value={id} width={66} height={20} />
+            <BarcodeComponent value={id || uuid} width={66} height={20} />
             <span className="corner_styled"></span>
           </div>
         </div>

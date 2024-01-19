@@ -10,12 +10,18 @@ interface HeroAddProps {
   teamId: number;
   originPlanetId: number;
   vehicleId: number;
+  citiesIds: Array<number>;
+  gadgetsIds: Array<number>;
+  powersIds: Array<number>;
 }
 
 export const HeroAdd: React.FC<HeroAddProps> = ({
   teamId,
   originPlanetId,
   vehicleId,
+  citiesIds,
+  gadgetsIds,
+  powersIds,
 }) => {
   const _authService = new AuthService();
   const navigate = useNavigate();
@@ -65,7 +71,61 @@ export const HeroAdd: React.FC<HeroAddProps> = ({
             },
           }
         )
-        .then(() => {
+        .then((response) => {
+          const heroId = response.data[0].uuid;
+
+          citiesIds.forEach((currentCityId: number) => {
+            axios.post(
+              apiUrl + "linkCityToHero",
+              {
+                heroUuid: heroId,
+                cityId: currentCityId,
+              },
+              {
+                headers: {
+                  Authorization: "Bearer " + _authService.getCookie(),
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+          });
+
+          
+          gadgetsIds.forEach((currentGadgetId: number) => {
+            axios.post(
+              apiUrl + "linkGadgetToHero",
+              {
+                heroUuid: heroId,
+                gadgetId: currentGadgetId,
+              },
+              {
+                headers: {
+                  Authorization: "Bearer " + _authService.getCookie(),
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+          });
+
+            
+          powersIds.forEach((currentPowerId: number) => {
+            axios.post(
+              apiUrl + "linkPowerToHero",
+              {
+                heroUuid: heroId,
+                powerId: currentPowerId,
+              },
+              {
+                headers: {
+                  Authorization: "Bearer " + _authService.getCookie(),
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+          });
+
+
+
           navigate("/");
         })
         .catch((err: any) => {

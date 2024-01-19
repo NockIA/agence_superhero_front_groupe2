@@ -17,7 +17,6 @@ const AddHeroPage: React.FC = () => {
   const [cityInfos, setCityInfos] = useState<number[]>([]);
   const [nextCitySlide, setNextCitySlide] = useState<boolean>(false);
   const [teamInfos, setTeamInfo] = useState<number | null>(null);
-  const [heroInfos, setHeroInfos] = useState<number | null>(null);
 
   const handleSetId = (
     stateFunction: React.Dispatch<React.SetStateAction<number | null>>,
@@ -99,7 +98,7 @@ const AddHeroPage: React.FC = () => {
           sentBackId={(id: number) => handleSetArrayId(setCityInfos, id)}
           renderCard={(hero: HeroCardInterface) => (
             <HeroCard
-              id={hero.id.toString()}
+              id={hero.id?.toString() || hero.uuid}
               name={hero.name}
               description={hero.description}
             />
@@ -113,7 +112,7 @@ const AddHeroPage: React.FC = () => {
           sentBackId={(id: number) => handleSetId(setTeamInfo, id)}
           renderCard={(hero: HeroCardInterface) => (
             <HeroCard
-              id={hero.id.toString()}
+              id={hero.id?.toString() || hero.uuid}
               name={hero.name}
               description={hero.description}
             />
@@ -125,9 +124,11 @@ const AddHeroPage: React.FC = () => {
           teamId={teamInfos}
           originPlanetId={planetInfos}
           vehicleId={vehicleInfos}
+          gadgetsIds={gadgetInfos}
+          powersIds={powerInfos}
+          citiesIds={cityInfos}
         />
       )}
-      {/* Ajoutez le formulaire du héros ici */}
     </>
   );
 };

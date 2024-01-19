@@ -88,7 +88,7 @@ const HomePage = () => {
               heroes.map((hero, index: number) => (
                 <HeroCard
                   key={index}
-                  id={hero.id}
+                  id={hero.id || hero.uuid}
                   linkImage={hero.linkImage}
                   name={hero.name}
                   team={hero.team}

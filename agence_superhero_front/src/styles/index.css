@@ -1,18 +1,37 @@
+/* ---------------- Fonts ---------------- */
+
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+
+/* ---------------- Colors ---------------- */
 
 :root {
  --background_sign : #F5E3B6;
  --red_wine : #8E0D3C;
  --beige : #F5E3B6; 
  --dark_red : #1B0F0C;
+ --hero_card_bg: #282323;
+ --gold : #BA9380;
+ --dark_gold : #A57A65;
+ --white: #FFF;
+ --light_gray : #393333;
+ --bg_singlehero_section : rgba(22, 13, 10, 0.90);
 }
+
+/* ---------------- Containers ---------------- */
 
 body {
   margin: 0;
-  min-height: 110vh;
+  padding: 0;
+  background-image: url("/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-clip: border-box;
+  background-size: cover;
 }
 h1,h2,h3,h4,h5,h6,p {
   margin: 0;
+  padding: 0;
 }
 
 .columnContainer {

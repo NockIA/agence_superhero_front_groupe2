@@ -1,0 +1,95 @@
+.container_profile_comp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  padding-top: 3rem;
+  background-color: var(--hero_card_bg);
+  border-radius: 15px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  align-items: center;
+  gap: 1.5rem;
+  overflow: hidden;
+  width: 30rem;
+  box-shadow: 0px 4px 20.9px 24px rgba(0, 0, 0, 0.25); 
+}
+
+.container_profile_comp .background_profile {
+  background-color: var(--gold);
+  width: 100%;
+  height: 13rem;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+.container_profile_comp h1 {
+  text-align: center;
+  color: var(--white);
+  text-transform: capitalize;
+}
+
+.container_profile_comp img {
+  border-radius: 999px;
+  border: 7px solid var(--dark_gold);
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  text-align: center;
+}
+
+.container_profile_edits {
+    background-color: var(--light_gray);
+    padding: 0.5rem;
+    border-radius: 10px;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.container_profile_edit {
+    gap: 0.1rem;
+}
+
+.container_cont_edits_prof {
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.container_cont_edits_prof h5 {
+    color: var(--white);
+    font-weight: 700;
+}
+
+.container_cont_edits_prof input {
+    background-color: transparent;
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    padding: 0.2rem .5rem;
+    color: var(--white);
+    outline: none;
+}
+
+.container_profile_comp .sumbit_profile_bnt  {
+    background-color: var(--dark_gold);
+    width: 100%;
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    color: var(--dark_red);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    border-radius: 5px;
+    font-weight: 900;
+}
+
+.container_profile_comp .delete_profile_bnt  {
+    background-color: var(--dark_red);
+    width: 100%;
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    color: var(--gold);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    border-radius: 5px;
+    font-weight: 900;
+}

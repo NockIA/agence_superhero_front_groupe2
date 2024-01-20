@@ -1,0 +1,258 @@
+/* ---------------- Responsive ---------------- */
+
+@media screen and (max-width: 400px) {
+  .container_single_hero_page {
+    overflow-x: hidden;
+  }
+}
+
+/* ---------------- Containers ---------------- */
+
+.container_content_header_single {
+  gap: 1rem;
+  position: relative;
+}
+
+.container_single_hero_page {
+  margin-top: 100px;
+  padding: 2rem 5vw;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--white);
+  gap: 4rem;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+.container_single_hero_page .header_single {
+  gap: 3rem;
+  background-color: var(--bg_singlehero_section);
+  padding: 2rem;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  position: relative;
+}
+
+.container_section_single {
+  gap: 2rem;
+  position: relative;
+  padding: 2rem;
+  background-color: var(--bg_singlehero_section);
+}
+
+.container_section_single .container_section_global {
+  gap: 5rem;
+}
+
+.container_section_global {
+  position: relative;
+}
+
+.container_single_img {
+  position: relative;
+}
+
+.container_content_section {
+  justify-content: space-between;
+  height: 20rem;
+  flex-wrap: wrap;
+}
+
+.container_content_section .container_cell_datas_hero {
+  gap: 1rem;
+}
+
+.container_team_members {
+  gap: 2rem;
+}
+
+.container_team {
+  gap: 3rem;
+  position: relative;
+  background-color: var(--bg_singlehero_section);
+
+  padding: 2rem;
+}
+
+/* ---------------- Separators ---------------- */
+
+.container_single_hero_page .separation_section_1 {
+  background-color: var(--bg_singlehero_section);
+  height: 50px;
+  width: 100%;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  position: absolute;
+  left: 0px;
+  bottom: -50px;
+}
+
+.container_single_hero_page .separation_section_2_top {
+  background-color: var(--bg_singlehero_section);
+  height: 50px;
+  width: 100%;
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+  position: absolute;
+  left: 0px;
+  top: -50px;
+}
+
+.container_single_hero_page .separation_section_2_bottom {
+  background-color: var(--bg_singlehero_section);
+  height: 50px;
+  width: 100%;
+  clip-path: polygon(0 0, 0 100%, 100% 0);
+  position: absolute;
+  left: 0px;
+  bottom: -50px;
+}
+
+.container_single_hero_page .separation_section_3_top {
+  background-color: var(--bg_singlehero_section);
+  height: 50px;
+  width: 100%;
+  clip-path: polygon(100% 100%, 0 100%, 100% 0);
+  position: absolute;
+  left: 0px;
+  top: -50px;
+}
+
+/* ---------------- Texts ---------------- */
+
+.header_single h1 {
+  font-weight: 900;
+  font-size: 32px;
+}
+
+.header_single h4 {
+  font-weight: 500;
+}
+
+.container_section_single h2 {
+  font-family: "Rampart One", sans-serif;
+}
+
+.container_cell_datas_hero h5 {
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.container_cell_datas_hero p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.container_team h2 {
+  font-family: "Rampart One", sans-serif;
+}
+
+/* ---------------- Images ---------------- */
+
+.container_single_img .border {
+  display: block;
+  background-color: var(--red_wine);
+  height: 320px;
+  width: 260px;
+  clip-path: polygon(
+    5% 0,
+    100% 0,
+    100% 30%,
+    100% 95%,
+    95% 100%,
+    30% 100%,
+    0 100%,
+    0 5%
+  );
+}
+
+.single_hero_image {
+  object-fit: fill;
+  width: 96%;
+  height: 97%;
+  position: absolute;
+  top: 1.6%;
+  left: 2%;
+  object-fit: cover;
+  clip-path: polygon(
+    4% 0,
+    100% 0,
+    100% 30%,
+    100% 95%,
+    95% 100%,
+    30% 100%,
+    0 100%,
+    0 4%
+  );
+}
+
+/* ---------------- Buttons ---------------- */
+
+.delete_hero_btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 8rem;
+  background-color: var(--red_wine);
+  padding: 0.5rem 1rem;
+  padding-bottom: 0.65rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: var(--white);
+  display: flex;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 2px 2px 4px rgba(177, 177, 177, 0.15);
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.delete_hero_btn:hover {
+  transform: translateX(5px);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.delete_hero_btn:not(:hover) {
+  transform: translateX(0px);
+  transition: 0.5s;
+}
+
+.edit_hero_btn {
+  position: absolute;
+  bottom: 2.75rem;
+  left: 0;
+  width: 8rem;
+  background-color: var(--gold);
+  padding: 0.5rem 1rem;
+  padding-bottom: 0.65rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: var(--red_wine);
+  display: flex;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 2px 2px 4px rgba(177, 177, 177, 0.15);
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.edit_hero_btn:hover {
+  transform: translateX(5px);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.edit_hero_btn:not(:hover) {
+  transform: translateX(0px);
+  transition: 0.5s;
+}
+
+/* ---------------- Others ---------------- */
+
+.container_single_hero_page input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--beige);
+  border-bottom: 2px solid var(--gold);
+  padding: 0.2rem 0.5rem;
+}

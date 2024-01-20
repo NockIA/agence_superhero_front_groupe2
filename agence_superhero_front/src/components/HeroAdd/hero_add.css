@@ -1,0 +1,123 @@
+.container_hero_add {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(300px + 590px + 50px);
+    height: calc(500px);
+    background-color: var(--bg_singlehero_section);
+    padding: 3rem 5vw;
+    gap: 5rem;
+    border-radius: 15px;
+    box-shadow: 4px 4px 17px rgba(0, 0, 0, 0.467);
+    justify-content: space-around;
+}
+
+
+  .container_hero_add .container_form_panel {
+    justify-content: space-between;
+  }
+
+ .container_form_panel h1{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 28px;
+    color: var(--beige);
+  }
+
+.container_form_panel .container_inputs_add_hero {
+    gap: 1rem;
+}
+
+.container_inputs_add_hero input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid var(--gold);
+    color: var(--white);
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.container_inputs_add_hero textarea {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border: 2px solid var(--gold);
+    border-radius: 3px;
+    padding: 0.2rem;
+    font-size: 13px;
+    color: var(--beige);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    resize: none;
+}
+
+.container_form_panel button {
+    background-color: var(--red_wine);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: var(--white);
+    outline: none;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    border: none;
+    box-shadow: 4px 4px 17px rgba(0, 0, 0, 0.467);
+  }
+  
+  .container_form_panel button:hover {
+    transform: translateY(3px);
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  .container_form_panel button:not(:hover) {
+    transform: translateY(0px);
+    transition: 0.5s;
+  }
+  
+  
+.container_single_img_add {
+    position: relative;
+  }
+  
+  .container_single_img_add .border {
+    display: block;
+    background-color: var(--red_wine);
+    height: 100%;
+    width: 265px;
+    clip-path: polygon(
+      5% 0,
+      100% 0,
+      100% 30%,
+      100% 95%,
+      95% 100%,
+      30% 100%,
+      0 100%,
+      0 5%
+    );
+  }
+  
+  .single_hero_image_add {
+    object-fit: fill;
+    width: 96%;
+    height: 97%;
+    filter: grayscale(100%);
+    position: absolute;
+    top: 1.6%;
+    left: 2%;
+    object-fit: cover;
+    clip-path: polygon(
+      4% 0,
+      100% 0,
+      100% 30%,
+      100% 95%,
+      95% 100%,
+      30% 100%,
+      0 100%,
+      0 4%
+    );
+  }
+
+  .error_add_hero {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: var(--red_wine);
+    font-weight: 900;
+    text-align: center;
+  }

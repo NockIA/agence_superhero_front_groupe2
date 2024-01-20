@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavigationBar from "../../components/Nav/nav";
 import Slider from "../../components/Sliders/SliderForm/slider_form";
 import {
@@ -6,6 +6,8 @@ import {
   HeroCardInterface,
 } from "../../components/HeroCard/hero_card";
 import { HeroAdd } from "../../components/HeroAdd/hero_add";
+import AuthService from "../../services/auth_services";
+import { useNavigate } from "react-router-dom";
 
 const AddHeroPage: React.FC = () => {
   const [planetInfos, setPlanetInfos] = useState<number | null>(null);
@@ -17,6 +19,8 @@ const AddHeroPage: React.FC = () => {
   const [cityInfos, setCityInfos] = useState<number[]>([]);
   const [nextCitySlide, setNextCitySlide] = useState<boolean>(false);
   const [teamInfos, setTeamInfo] = useState<number | null>(null);
+  const _authService = new AuthService();
+  const navigate = useNavigate();
 
   const handleSetId = (
     stateFunction: React.Dispatch<React.SetStateAction<number | null>>,
@@ -38,6 +42,12 @@ const AddHeroPage: React.FC = () => {
   ) => {
     stateFunction(continues);
   };
+
+  useEffect(() => {
+    if (_authService.getCookie() == null) {
+      navigate('/signup');
+    }
+  });
 
   return (
     <>

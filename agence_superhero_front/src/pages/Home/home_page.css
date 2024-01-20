@@ -1,3 +1,5 @@
+/* ---------------- Containers ---------------- */
+
 .container_homepage {
   margin-top: 120px;
 }
@@ -23,8 +25,16 @@
   flex-wrap: wrap;
   padding: 3rem 3vw;
   gap: 5vw;
-
 }
+
+.container_homepage .container_tags {
+  align-self: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+/* ---------------- Texts ---------------- */
 
 .container_homepage .error_message {
   color: var(--white);
@@ -33,12 +43,6 @@
   font-size: 24px;
   text-align: center;
   width: 100%;
-}
-
-.container_homepage .container_tags {
-  align-self: center;
-  gap: 2rem;
-  margin: 2rem 0;
 }
 
 .container_search_bar .sort_btn {

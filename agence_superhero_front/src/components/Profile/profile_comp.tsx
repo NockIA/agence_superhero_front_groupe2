@@ -13,8 +13,6 @@ export const ProfileComp: React.FC<UserInfos> = ({
   lastname,
   password,
   linkProfileImage,
-  isAdmin,
-  id,
 }) => {
   const [firstnameCtrl, setFirstnameCtrl] = useState("");
   const [lastnameCtrl, setLastnameCtrl] = useState("");

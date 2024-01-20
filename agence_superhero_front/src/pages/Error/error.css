@@ -1,17 +1,21 @@
+/* ---------------- Containers ---------------- */
+
 .container_error_page {
   width: 100vw;
   height: 100vh;
   font-family: "Plus Jakarta Sans", sans-serif;
   gap: 2rem;
 }
+/* ---------------- texts ---------------- */
+
+.container_error_page h1 {
+  color: var(--beige);
+}
+/* ---------------- Others ---------------- */
 
 .container_error_page img {
   width: 40vw;
   object-fit: contain;
-}
-
-.container_error_page h1 {
-  color: var(--beige);
 }
 
 .container_error_page .btn_back_home {

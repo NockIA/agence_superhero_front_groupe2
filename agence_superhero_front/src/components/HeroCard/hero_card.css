@@ -53,7 +53,6 @@
   font-size: 24px;
   text-overflow: ellipsis;
   overflow: hidden;
-  max-height: 55px;
   text-transform: uppercase;
 }
 

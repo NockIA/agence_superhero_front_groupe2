@@ -31,12 +31,12 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
           to={"/single-hero/" + UUID}
           className="columnContainer container_hero_card"
         >
-          <img src={linkImage ?? "./src/assets/no_image.png"} alt="" />
+          <img src={linkImage ?? "/no_image.png"} alt="" />
           <div className="container_content_hero_card columnContainer">
             <i className="i1" />
             <h2>{name}</h2>
             <i className="i2" />
-            <h5>{(team || description) ?? "Undifined"}</h5>
+            <h5>{(team || description) ?? "Undefined"}</h5>
             <span className="separation"></span>
             <i className="i3" />
             <article className="rowContainer container_id_herocard">
@@ -50,12 +50,12 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
         </Link>
       ) : (
         <div className="columnContainer container_hero_card">
-          <img src={linkImage ?? "./src/assets/no_image.png"} alt="" />
+          <img src={linkImage ?? "/no_image.png"} alt="" />
           <div className="container_content_hero_card columnContainer">
             <i className="i1" />
             <h2>{name}</h2>
             <i className="i2" />
-            <h5>{(team || description) ?? "No team"}</h5>
+            <h5>{(team || description) ?? "Undefined"}</h5>
             <span className="separation"></span>
             <i className="i3" />
             <article className="rowContainer container_id_herocard">

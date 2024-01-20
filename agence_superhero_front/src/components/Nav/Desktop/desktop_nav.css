@@ -30,6 +30,10 @@
   font-family: " Plus Jakarta Sans", sans-serif;
 }
 
+.container_desktop_nav_links .active_link {
+  color: var(--red_wine);
+}
+
 .container_desktop_nav_links .link:hover {
   color: var(--red_wine);
 }

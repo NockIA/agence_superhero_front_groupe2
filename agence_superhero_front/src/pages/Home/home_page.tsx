@@ -103,6 +103,7 @@ const HomePage = () => {
                   linkImage={hero.linkImage}
                   name={hero.name}
                   team={hero.team}
+                  UUID={hero.UUID}
                   description={hero.description}
                 />
               ))
@@ -115,6 +116,7 @@ const HomePage = () => {
                   linkImage={hero.linkImage}
                   name={hero.name}
                   team={hero.team}
+                  UUID={hero.UUID}
                   description={hero.description}
                 />
               ))

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../../styles/index.css";
 import "./desktop_nav.css";
 import AuthService from "../../../services/auth_services";
@@ -9,6 +9,8 @@ const DesktopNav: React.FC = () => {
   const _authService = new AuthService();
   const [isConnected, setIsConnected] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
   useEffect(() => {
     if (_authService.getCookie()) {
       setIsConnected(true);
@@ -26,7 +28,13 @@ const DesktopNav: React.FC = () => {
       <img className="desktop_logo_nav" src="/logo.png" alt="" />
       <div className="rowContainer container_desktop_nav_links">
         {navLinks.map((link: link, index: number) => (
-          <Link key={index} className="link" to={link.url}>
+          <Link
+            key={index}
+            className={`link ${
+              location.pathname === link.url ? "active_link" : ""
+            }`}
+            to={link.url}
+          >
             {link.name}
           </Link>
         ))}

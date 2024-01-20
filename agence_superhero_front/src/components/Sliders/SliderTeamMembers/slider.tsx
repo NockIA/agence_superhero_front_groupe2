@@ -31,7 +31,7 @@ export const SimpleSlider: React.FC<SliderProps> = ({ slides }) => {
         <div
           className="rowContainer container_content_slider"
           style={{
-            transform: `translateX(-${currentIndex * 20}%)`,
+            transform: `translateX(-${currentIndex * 50}%)`,
           }}
         >
           {slides.map((slide, index) => (

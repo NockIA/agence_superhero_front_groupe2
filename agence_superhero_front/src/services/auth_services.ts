@@ -37,6 +37,7 @@ class AuthService {
   deleteCookie() {
     const cookieString =
       "jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=None; Secure";
+
     axios
       .post(apiUrl + "logout", {
         headers: {
@@ -46,6 +47,9 @@ class AuthService {
       })
       .then(() => {
         document.cookie = cookieString;
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
       });
   }
 }

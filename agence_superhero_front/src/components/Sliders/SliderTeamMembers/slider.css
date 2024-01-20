@@ -18,7 +18,7 @@
     transition: 0.5s ease;
     align-items: center;
     display: flex;
-    
+    gap: 2rem;
 }
 
 .container_content_slider .slide {
@@ -30,6 +30,7 @@
 @media (min-width: 768px) {
     .container_content_slider .slide {
         flex: 0 0 calc(100% / 4); 
+        
     }
 }
 

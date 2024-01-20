@@ -1,3 +1,4 @@
+import { HeroCardInterface } from "../components/HeroCard/hero_card";
 
 export interface PowersProps {
   id: string;
@@ -25,5 +26,20 @@ export interface PlanetProps {
   description: string;
 }
 
+export interface SingleHeroProps {
+  UUID: string;
+  description: string;
+  firstname: string;
+  hairColor: string;
+  heroname: string;
+  lastname: string;
+  linkImage: string;
+  originPlannet: PlanetProps;
+  sexe: string;
 
-
+  vehicle: number;
+  team: PlanetProps;
+  gadgets: Array<HeroCardInterface>;
+  powers: Array<HeroCardInterface>;
+  city: Array<HeroCardInterface>;
+}

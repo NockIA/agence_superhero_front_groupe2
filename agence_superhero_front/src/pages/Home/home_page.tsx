@@ -7,21 +7,21 @@ import "./home_page.css";
 import "../../styles/index.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { apiUrl, heroesDefault } from "../../utils/constants";
-import { tags } from "../../utils/constants";
 import { CategoryComp } from "../../components/CategoryComp/category_comp";
+import AuthService from "../../services/auth_services";
+import { tags } from "../../utils/tags";
+import { apiUrl } from "../../utils/api";
 
 const HomePage = () => {
-  const handleTagClick = (newHeroes: Array<HeroCardInterface>) => {
-    setHeroes(newHeroes);
-  };
+  const _authService = new AuthService();
   const [searchContent, setSearchContent] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [activeTag, setActiveTag] = useState<string | null>(tags[0].title);
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [filteredSearchHeroes, setFilteredSearchHeroes] = useState<
     Array<HeroCardInterface>
   >([]);
-  const [heroes, setHeroes] = useState<Array<HeroCardInterface>>(heroesDefault);
+  const [heroes, setHeroes] = useState<Array<HeroCardInterface>>([]);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value.toLowerCase();
@@ -37,16 +37,57 @@ const HomePage = () => {
     }
   };
 
+  const handleTagClick = ({
+    data,
+    title,
+  }: {
+    data: Array<HeroCardInterface>;
+    title: string;
+  }) => {
+    setHeroes(data);
+    setActiveTag(title);
+  };
+
   useEffect(() => {
-    // axios
-    //   .get(apiUrl + "getSuperHeros")
-    //   .then((response) => {
-    //     setHeroes(response.data);
-    //   })
-    //   .catch((err) => {
-    //     setErrorMsg(err.message);
-    //   });
+    console.log(_authService.getCookie());
+    axios
+      .get(apiUrl + "allHeros", {
+        headers: {
+          Authorization: "Bearer " + _authService.getCookie(),
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setHeroes(response.data);
+      })
+      .catch((err) => {
+        setErrorMsg(err.message);
+      });
   }, []);
+
+  const sortHeroes = () => {
+    const sortedHeroes = [...heroes].sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+
+      if (sortOrder === 'asc') {
+        return nameA.localeCompare(nameB);
+      } else {
+        return nameB.localeCompare(nameA);
+      }
+    });
+
+    setHeroes(sortedHeroes);
+  };
+
+  const toggleSortOrder = () => {
+    const newOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+    setSortOrder(newOrder);
+  };
+
+  useEffect(() => {
+    sortHeroes();
+  }, [sortOrder]);
 
   return (
     <>
@@ -62,20 +103,20 @@ const HomePage = () => {
             value={searchContent}
             onChange={handleSearch}
           />
+          <button className="sort_btn" onClick={toggleSortOrder}>
+            {sortOrder === "asc" ? "Sort Desc" : "Sort Asc"}
+          </button>
         </div>
-
         <section className="columnContainer">
           <article className="rowContainer container_tags alignCenter">
             {tags.length > 0 &&
               tags.map((tag, index: number) => (
                 <CategoryComp
                   key={index}
-                  method={tag.method}
                   title={tag.title}
                   request={tag.request}
                   isActive={tag.title === activeTag}
                   onUpdateHeroes={handleTagClick}
-                  onClick={() => setActiveTag(tag.title)}
                 />
               ))}
           </article>
@@ -85,20 +126,26 @@ const HomePage = () => {
               heroes.map((hero, index: number) => (
                 <HeroCard
                   key={index}
-                  id={hero.id}
-                  image={hero.image}
+                  isHero={activeTag == "All characters"}
+                  id={hero.id || hero.UUID}
+                  linkImage={hero.linkImage}
                   name={hero.name}
                   team={hero.team}
+                  UUID={hero.UUID}
+                  description={hero.description}
                 />
               ))
             ) : filteredSearchHeroes.length > 0 ? (
               filteredSearchHeroes.map((hero, index: number) => (
                 <HeroCard
+                  isHero={activeTag == "All characters"}
                   key={index}
-                  id={hero.id}
-                  image={hero.image}
+                  id={hero.id || hero.UUID}
+                  linkImage={hero.linkImage}
                   name={hero.name}
                   team={hero.team}
+                  UUID={hero.UUID}
+                  description={hero.description}
                 />
               ))
             ) : (

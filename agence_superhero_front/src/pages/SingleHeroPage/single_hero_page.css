@@ -4,6 +4,14 @@
   font-family: "Plus Jakarta Sans", sans-serif;
   color: var(--white);
   gap: 4rem;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 400px) {
+  .container_single_hero_page {
+    overflow-x: hidden;
+  }
 }
 
 .container_single_hero_page .header_single {
@@ -21,7 +29,7 @@
   width: 100%;
   clip-path: polygon(100% 0, 0 0, 100% 100%);
   position: absolute;
-  left: 0.5px;
+  left: 0px;
   bottom: -50px;
 }
 
@@ -51,7 +59,7 @@
   width: 100%;
   clip-path: polygon(100% 100%, 0 100%, 100% 0);
   position: absolute;
-  left: 0.5px;
+  left: 0px;
   top: -50px;
 }
 
@@ -153,8 +161,7 @@
   gap: 3rem;
   position: relative;
   background-color: var(--bg_singlehero_section);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+
   padding: 2rem;
 }
 .container_team h2 {

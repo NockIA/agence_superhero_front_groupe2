@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./slider.css";
-import "../../styles/index.css";
+import "../../../styles/index.css";
 
 interface SliderProps {
   slides: JSX.Element[];
@@ -31,7 +31,7 @@ export const SimpleSlider: React.FC<SliderProps> = ({ slides }) => {
         <div
           className="rowContainer container_content_slider"
           style={{
-            transform: `translateX(-${currentIndex * 20}%)`,
+            transform: `translateX(-${currentIndex * 50}%)`,
           }}
         >
           {slides.map((slide, index) => (

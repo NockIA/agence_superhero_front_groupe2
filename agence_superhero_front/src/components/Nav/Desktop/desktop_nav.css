@@ -30,6 +30,10 @@
   font-family: " Plus Jakarta Sans", sans-serif;
 }
 
+.container_desktop_nav_links .active_link {
+  color: var(--red_wine);
+}
+
 .container_desktop_nav_links .link:hover {
   color: var(--red_wine);
 }
@@ -62,5 +66,6 @@
 .bnt_desktop_nav:hover {
   background-color: transparent;
   transition: 0.5s;
+  cursor: pointer;
   color: var(--beige);
 }

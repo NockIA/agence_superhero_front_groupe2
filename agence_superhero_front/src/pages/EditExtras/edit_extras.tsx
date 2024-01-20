@@ -138,11 +138,9 @@ const EditExtras: React.FC = () => {
                 <button onClick={handleConfirm} className="btn_edit_extra">
                   Edit
                 </button>
-                {/* {getUrl !== "getOneVehicle" && getUrl !== "getOnePlannet" && ( */}
-                  <button onClick={handleDelete} className="btn_delete_extra">
-                    Delete
-                  </button>
-                {/* )} */}
+                <button onClick={handleDelete} className="btn_delete_extra">
+                  Delete
+                </button>
               </article>
             )}
           </section>

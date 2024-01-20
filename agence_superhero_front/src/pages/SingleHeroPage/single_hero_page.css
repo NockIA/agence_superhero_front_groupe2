@@ -1,3 +1,18 @@
+/* ---------------- Responsive ---------------- */
+
+@media screen and (max-width: 400px) {
+  .container_single_hero_page {
+    overflow-x: hidden;
+  }
+}
+
+/* ---------------- Containers ---------------- */
+
+.container_content_header_single {
+  gap: 1rem;
+  position: relative;
+}
+
 .container_single_hero_page {
   margin-top: 100px;
   padding: 2rem 5vw;
@@ -8,12 +23,6 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 400px) {
-  .container_single_hero_page {
-    overflow-x: hidden;
-  }
-}
-
 .container_single_hero_page .header_single {
   gap: 3rem;
   background-color: var(--bg_singlehero_section);
@@ -22,6 +31,49 @@
   border-top-left-radius: 10px;
   position: relative;
 }
+
+.container_section_single {
+  gap: 2rem;
+  position: relative;
+  padding: 2rem;
+  background-color: var(--bg_singlehero_section);
+}
+
+.container_section_single .container_section_global {
+  gap: 5rem;
+}
+
+.container_section_global {
+  position: relative;
+}
+
+.container_single_img {
+  position: relative;
+}
+
+.container_content_section {
+  justify-content: space-between;
+  height: 20rem;
+  flex-wrap: wrap;
+}
+
+.container_content_section .container_cell_datas_hero {
+  gap: 1rem;
+}
+
+.container_team_members {
+  gap: 2rem;
+}
+
+.container_team {
+  gap: 3rem;
+  position: relative;
+  background-color: var(--bg_singlehero_section);
+
+  padding: 2rem;
+}
+
+/* ---------------- Separators ---------------- */
 
 .container_single_hero_page .separation_section_1 {
   background-color: var(--bg_singlehero_section);
@@ -63,6 +115,8 @@
   top: -50px;
 }
 
+/* ---------------- Texts ---------------- */
+
 .header_single h1 {
   font-weight: 900;
   font-size: 32px;
@@ -72,28 +126,26 @@
   font-weight: 500;
 }
 
-.container_section_single {
-  gap: 2rem;
-  position: relative;
-  padding: 2rem;
-  background-color: var(--bg_singlehero_section);
-}
-
 .container_section_single h2 {
   font-family: "Rampart One", sans-serif;
 }
 
-.container_section_single .container_section_global {
-  gap: 5rem;
+.container_cell_datas_hero h5 {
+  font-weight: 900;
+  font-size: 16px;
 }
 
-.container_section_global {
-  position: relative;
+.container_cell_datas_hero p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.container_single_img {
-  position: relative;
+.container_team h2 {
+  font-family: "Rampart One", sans-serif;
 }
+
+/* ---------------- Images ---------------- */
 
 .container_single_img .border {
   display: block;
@@ -132,46 +184,13 @@
   );
 }
 
-.container_content_section {
-  justify-content: space-between;
-  height: 20rem;
-  flex-wrap: wrap;
-}
-
-.container_content_section .container_cell_datas_hero {
-  gap: 1rem;
-}
-
-.container_cell_datas_hero h5 {
-  font-weight: 900;
-  font-size: 16px;
-}
-
-.container_cell_datas_hero p {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.container_team_members {
-  gap: 2rem;
-}
-
-.container_team {
-  gap: 3rem;
-  position: relative;
-  background-color: var(--bg_singlehero_section);
-
-  padding: 2rem;
-}
-.container_team h2 {
-  font-family: "Rampart One", sans-serif;
-}
+/* ---------------- Buttons ---------------- */
 
 .delete_hero_btn {
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 8rem;
   background-color: var(--red_wine);
   padding: 0.5rem 1rem;
   padding-bottom: 0.65rem;
@@ -197,7 +216,43 @@
   transition: 0.5s;
 }
 
-.container_content_header_single {
-  gap: 1rem;
-  position: relative;
+.edit_hero_btn {
+  position: absolute;
+  bottom: 2.75rem;
+  left: 0;
+  width: 8rem;
+  background-color: var(--gold);
+  padding: 0.5rem 1rem;
+  padding-bottom: 0.65rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: var(--red_wine);
+  display: flex;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 2px 2px 4px rgba(177, 177, 177, 0.15);
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.edit_hero_btn:hover {
+  transform: translateX(5px);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.edit_hero_btn:not(:hover) {
+  transform: translateX(0px);
+  transition: 0.5s;
+}
+
+/* ---------------- Others ---------------- */
+
+.container_single_hero_page input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--beige);
+  border-bottom: 2px solid var(--gold);
+  padding: 0.2rem 0.5rem;
 }

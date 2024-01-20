@@ -6,40 +6,28 @@ import {
 } from "../../components/HeroCard/hero_card";
 import "./single_hero_page.css";
 import "../../styles/index.css";
-import {
-  PowersProps,
-  GadgetsProps,
-  VehicleProps,
-  PlanetProps,
-  SingleHeroProps,
-} from "../../utils/interfaces";
-import { apiUrl } from "../../utils/api";
+import { SingleHeroProps } from "../../utils/interfaces";
+import { apiKey, apiUrl } from "../../utils/api";
 import { SimpleSlider } from "../../components/Sliders/SliderTeamMembers/slider";
-import axios, { AxiosResponse } from "axios";
-import { useLocation } from "react-router-dom";
+import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
 import AuthService from "../../services/auth_services";
-
-interface HeroDatasProps {
-  image: string;
-  name: string;
-  desc: string;
-  heroName: string;
-  sexe: string;
-  hairColor: string;
-  city: string;
-  powers: Array<PowersProps>;
-  gadgets: Array<GadgetsProps>;
-  team: Array<HeroCardInterface>;
-  vehicle: VehicleProps;
-  originPlanet: PlanetProps;
-}
 
 const SingleHeroPage = () => {
   const [heroDatas, setHeroDatas] = useState<SingleHeroProps>();
   const [idHero, setIdHero] = useState("");
   const location = useLocation();
+  const navigate = useNavigate();
   const _authService = new AuthService();
   const [teamMembers, setTeamMembers] = useState<Array<HeroCardInterface>>();
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedFirstname, setEditedFirstname] = useState("");
+  const [editedLastname, setEditedLastname] = useState("");
+  const [editedHeroname, setEditedHeroname] = useState("");
+  const [editedDesc, setEditedDesc] = useState("");
+  const [editedSexe, setEditedSexe] = useState("");
+  const [editedHairColor, setEditedHairColor] = useState("");
+  const [editedLinkImage, setEditedLinkImage] = useState("");
 
   useEffect(() => {
     const path = location.pathname.split("/");
@@ -49,43 +37,88 @@ const SingleHeroPage = () => {
         headers: {
           Authorization: "Bearer " + _authService.getCookie(),
           "Content-Type": "application/json",
+          "X-API-Key": apiKey,
         },
       })
-      .then((response) => {
+      .then((response: any) => {
         setHeroDatas(response.data[0]);
-        axios
-          .get(apiUrl + "getAllHeroOfOneTeams/" + response.data[0].team.id, {
-            headers: {
-              Authorization: "Bearer " + _authService.getCookie(),
-              "Content-Type": "application/json",
-            },
-          })
-          .then((responseTeam) => {
-            console.log(responseTeam.data);
+        console.log("resp", response.data);
 
-            setTeamMembers(responseTeam.data);
-          })
-          .catch((err) => {
-            console.error(err.message);
-          });
+        if (response.data[0].team) {
+          axios
+            .get(apiUrl + "getAllHeroOfOneTeams/" + response.data[0].team.id, {
+              headers: {
+                Authorization: "Bearer " + _authService.getCookie(),
+                "Content-Type": "application/json",
+                "X-API-Key": apiKey,
+              },
+            })
+            .then((responseTeam) => {
+              console.log(responseTeam.data);
+
+              setTeamMembers(responseTeam.data);
+            })
+            .catch((err) => {
+              console.error(err.message);
+            });
+        }
       });
   }, []);
 
   const deleteHero = async () => {
-    await axios
-      .post(
-        apiUrl + "deleteHero ",
-        { idHero: idHero },
-        {
+    if (heroDatas?.canModificate) {
+      await axios
+        .delete(apiUrl + "hero/" + idHero, {
           headers: {
             Authorization: "Bearer " + _authService.getCookie(),
             "Content-Type": "application/json",
+            "X-API-Key": apiKey,
           },
-        }
-      )
-      .catch((err) => {
-        console.error(err.message);
-      });
+        })
+        .then(() => {
+          navigate("/");
+        })
+        .catch((err) => {
+          console.error(err.message);
+        });
+    }
+  };
+
+  const editHero = async () => {
+    if (isEditing) {
+      const datas = {
+        uuid: idHero,
+        firstname:
+          editedFirstname != "" ? editedFirstname : heroDatas?.firstname,
+        lastname: editedLastname != "" ? editedLastname : heroDatas?.lastname,
+        heroname: editedHeroname != "" ? editedHeroname : heroDatas?.heroname,
+        sexe: editedSexe != "" ? editedSexe : heroDatas?.sexe,
+        hairColor:
+          editedHairColor != "" ? editedHairColor : heroDatas?.hairColor,
+        description: editedDesc != "" ? editedDesc : heroDatas?.description,
+        linkImage:
+          editedLinkImage != "" ? editedLinkImage : heroDatas?.linkImage,
+        team: heroDatas?.team.id,
+        originPlannet: heroDatas?.originPlannet.id,
+      };
+
+      axios
+        .put(apiUrl + "updateHero", datas, {
+          headers: {
+            Authorization: "Bearer " + _authService.getCookie(),
+            "Content-Type": "application/json",
+            "X-API-Key": apiKey,
+          },
+        }).then(()=>{
+          navigate('/');
+        })
+        .catch((err) => {
+          console.error(err.message);
+        });
+      setIsEditing(false);
+    } else {
+      setIsEditing(true);
+    }
   };
 
   return (
@@ -102,14 +135,47 @@ const SingleHeroPage = () => {
             />
           </div>
           <div className="columnContainer container_content_header_single">
-            <h1>{heroDatas?.heroname ?? "Undefined"}</h1>
-            <h4>{heroDatas?.description ?? "Undefined"}</h4>
-            <button
-              onClick={deleteHero}
-              className="delete_hero_btn alignCenter"
-            >
-              Delete
-            </button>
+            {isEditing ? (
+              <input
+                type="text"
+                placeholder={heroDatas?.heroname}
+                value={editedHeroname}
+                onChange={(e) => setEditedHeroname(e.target.value)}
+              />
+            ) : (
+              <h1>{heroDatas?.heroname ?? "Undefined"}</h1>
+            )}
+            {isEditing ? (
+              <input
+                type="text"
+                placeholder={heroDatas?.description}
+                value={editedDesc}
+                onChange={(e) => setEditedDesc(e.target.value)}
+              />
+            ) : (
+              <h4>{heroDatas?.description ?? "Undefined"}</h4>
+            )}
+            {isEditing && (
+              <input
+                type="text"
+                placeholder={heroDatas?.linkImage}
+                value={editedLinkImage}
+                onChange={(e) => setEditedLinkImage(e.target.value)}
+              />
+            )}
+            {heroDatas?.canModificate && (
+              <button onClick={editHero} className="edit_hero_btn alignCenter">
+                {isEditing ? "Confirm" : "Edit"}
+              </button>
+            )}
+            {heroDatas?.canModificate && (
+              <button
+                onClick={deleteHero}
+                className="delete_hero_btn alignCenter"
+              >
+                Delete
+              </button>
+            )}
           </div>
           <span className="separation_section_1"></span>
         </section>
@@ -119,36 +185,74 @@ const SingleHeroPage = () => {
           <article className="columnContainer container_content_section">
             <div className="rowContainer container_cell_datas_hero">
               <h5>Firstname :</h5>
-              <p>{heroDatas?.firstname ?? "Undefined"}</p>
+              {isEditing ? (
+                <input
+                  type="text"
+                  placeholder={heroDatas?.firstname}
+                  value={editedFirstname}
+                  onChange={(e) => setEditedFirstname(e.target.value)}
+                />
+              ) : (
+                <p>{heroDatas?.firstname ?? "Undefined"}</p>
+              )}
             </div>
             <div className="rowContainer container_cell_datas_hero">
               <h5>Lastname :</h5>
-              <p>{heroDatas?.lastname ?? "Undefined"}</p>
+              {isEditing ? (
+                <input
+                  type="text"
+                  placeholder={heroDatas?.lastname}
+                  value={editedLastname}
+                  onChange={(e) => setEditedLastname(e.target.value)}
+                />
+              ) : (
+                <p>{heroDatas?.lastname ?? "Undefined"}</p>
+              )}
             </div>
             <div className="rowContainer container_cell_datas_hero">
               <h5>Sexe :</h5>
-              <p>{heroDatas?.sexe ?? "Undefined"}</p>
+              {isEditing ? (
+                <input
+                  type="text"
+                  placeholder={heroDatas?.sexe}
+                  value={editedSexe}
+                  onChange={(e) => setEditedSexe(e.target.value)}
+                />
+              ) : (
+                <p>{heroDatas?.sexe ?? "Undefined"}</p>
+              )}
             </div>
             <div className="rowContainer container_cell_datas_hero">
               <h5>Hair color :</h5>
-              <p>{heroDatas?.hairColor ?? "Undefined"}</p>
+              {isEditing ? (
+                <input
+                  type="text"
+                  placeholder={heroDatas?.hairColor}
+                  value={editedHairColor}
+                  onChange={(e) => setEditedHairColor(e.target.value)}
+                />
+              ) : (
+                <p>{heroDatas?.hairColor ?? "Undefined"}</p>
+              )}
             </div>
+
             <div className="rowContainer container_cell_datas_hero">
               <h5>Origin planet :</h5>
               <p>{heroDatas?.originPlannet.name ?? "Undefined"}</p>
             </div>
             <div className="rowContainer container_cell_datas_hero">
               <h5>Team :</h5>
-              <p>{heroDatas?.team.name ?? "Undefined"}</p>
+              <p>{heroDatas?.team ? heroDatas?.team.name : "No team"}</p>
             </div>
           </article>
           <span className="separation_section_2_bottom"></span>
         </section>
+
         <section className="columnContainer container_team">
           <span className="separation_section_3_top"></span>
           <h2>Gadgets</h2>
           <article className="rowContainer container_team_members">
-            {heroDatas?.gadgets && (
+            {heroDatas?.gadgets && heroDatas.powers.length > 0 && (
               <SimpleSlider
                 slides={heroDatas?.gadgets?.map((hero) => (
                   <HeroCard
@@ -164,11 +268,12 @@ const SingleHeroPage = () => {
           </article>
           <span className="separation_section_1"></span>
         </section>
+
         <section className="columnContainer container_team">
           <span className="separation_section_2_top"></span>
           <h2>Powers</h2>
           <article className="rowContainer container_team_members">
-            {heroDatas?.powers && (
+            {heroDatas?.powers && heroDatas.powers.length > 0 && (
               <SimpleSlider
                 slides={heroDatas?.powers?.map((hero) => (
                   <HeroCard
@@ -184,11 +289,12 @@ const SingleHeroPage = () => {
           </article>
           <span className="separation_section_2_bottom"></span>
         </section>
+
         <section className="columnContainer container_team">
           <span className="separation_section_3_top"></span>
           <h2>Protected Cities</h2>
           <article className="rowContainer container_team_members">
-            {heroDatas?.city && (
+            {heroDatas?.city && heroDatas.city.length > 0 && (
               <SimpleSlider
                 slides={heroDatas?.city?.map((hero) => (
                   <HeroCard
@@ -202,6 +308,7 @@ const SingleHeroPage = () => {
           </article>
           <span className="separation_section_1"></span>
         </section>
+
         <section className="columnContainer container_team">
           <span className="separation_section_2_top"></span>
           <h2>Team Members</h2>

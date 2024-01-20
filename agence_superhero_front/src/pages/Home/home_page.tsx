@@ -10,7 +10,7 @@ import axios from "axios";
 import { CategoryComp } from "../../components/CategoryComp/category_comp";
 import AuthService from "../../services/auth_services";
 import { tags } from "../../utils/tags";
-import { apiUrl } from "../../utils/api";
+import { apiKey, apiUrl } from "../../utils/api";
 
 const HomePage = () => {
   const _authService = new AuthService();
@@ -55,6 +55,7 @@ const HomePage = () => {
         headers: {
           Authorization: "Bearer " + _authService.getCookie(),
           "Content-Type": "application/json",
+          "X-API-Key": apiKey,
         },
       })
       .then((response) => {
@@ -89,6 +90,11 @@ const HomePage = () => {
     sortHeroes();
   }, [sortOrder]);
 
+  useEffect(() => {
+    console.log(activeTag);
+    
+  }, [activeTag]);
+
   return (
     <>
       <NavigationBar />
@@ -122,7 +128,7 @@ const HomePage = () => {
           </article>
 
           <article className="rowContainer container_heros alignCenter">
-            {searchContent === "" ? (
+            {activeTag && searchContent === "" ? (
               heroes.map((hero, index: number) => (
                 <HeroCard
                   key={index}
@@ -132,10 +138,11 @@ const HomePage = () => {
                   name={hero.name}
                   team={hero.team}
                   UUID={hero.UUID}
+                  tag={activeTag}
                   description={hero.description}
                 />
               ))
-            ) : filteredSearchHeroes.length > 0 ? (
+            ) : activeTag && filteredSearchHeroes.length > 0 ? (
               filteredSearchHeroes.map((hero, index: number) => (
                 <HeroCard
                   isHero={activeTag == "All characters"}
@@ -145,6 +152,7 @@ const HomePage = () => {
                   name={hero.name}
                   team={hero.team}
                   UUID={hero.UUID}
+                  tag={activeTag}
                   description={hero.description}
                 />
               ))

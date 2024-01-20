@@ -25,7 +25,7 @@ export const tags: Array<TagProps> = [
     title: "All vehicles",
   },
   {
-    request: "city",
+    request: "cities",
     title: "All Cities",
   },
 ];

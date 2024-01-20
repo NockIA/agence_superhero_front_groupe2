@@ -36,7 +36,7 @@ export interface SingleHeroProps {
   linkImage: string;
   originPlannet: PlanetProps;
   sexe: string;
-
+  canModificate : boolean;
   vehicle: number;
   team: PlanetProps;
   gadgets: Array<HeroCardInterface>;

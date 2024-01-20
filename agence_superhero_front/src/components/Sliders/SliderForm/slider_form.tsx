@@ -3,7 +3,7 @@ import "../../../styles/index.css";
 import "./slider_form.css";
 import axios from "axios";
 import { PlanetProps } from "../../../utils/interfaces";
-import { apiUrl } from "../../../utils/api";
+import { apiKey, apiUrl } from "../../../utils/api";
 import AuthService from "../../../services/auth_services";
 import { HeroCardInterface } from "../../HeroCard/hero_card";
 
@@ -59,6 +59,7 @@ const Slider: React.FC<SliderProps> = ({
         headers: {
           Authorization: "Bearer " + _authService.getCookie(),
           "Content-Type": "application/json",
+          "X-API-Key": apiKey,
         },
       });
       setSlides(response.data);
@@ -68,7 +69,7 @@ const Slider: React.FC<SliderProps> = ({
   };
 
   useEffect(() => {
-    if (getUrl === "city") {
+    if (getUrl === "cities") {
       fetchPlanets();
     }
     fetchData();
@@ -80,6 +81,7 @@ const Slider: React.FC<SliderProps> = ({
         headers: {
           Authorization: "Bearer " + _authService.getCookie(),
           "Content-Type": "application/json",
+          "X-API-Key": apiKey,
         },
       });
       setPlanets(response.data);
@@ -121,6 +123,7 @@ const Slider: React.FC<SliderProps> = ({
           headers: {
             Authorization: "Bearer " + _authService.getCookie(),
             "Content-Type": "application/json",
+            "X-API-Key": apiKey,
           },
         });
         fetchData();
@@ -138,7 +141,7 @@ const Slider: React.FC<SliderProps> = ({
   };
 
   return (
-    <main className="rowContainer container_slider_global">
+    <main className="container_slider_global">
       <div className="container_slider_add rowContainer">
         <span
           onClick={prevSlide}
@@ -190,7 +193,7 @@ const Slider: React.FC<SliderProps> = ({
           name="newInput"
           placeholder="Name"
         />
-        {getUrl === "city" && (
+        {getUrl === "cities" && (
           <select className="select_menu" onChange={(e) => setSelectedPlanet(e.target.value)}>
             {planets.map((planet: PlanetProps, index: number) => (
               <option key={index} value={planet.id}>

@@ -4,29 +4,37 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import AuthService from "../../../services/auth_services";
-import { apiUrl } from "../../../utils/api";
+import { apiKey, apiUrl } from "../../../utils/api";
 
 export const SignUp: React.FC = () => {
   const _authService = new AuthService();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [emailController, setEmailController] = useState("");
   const [firstnameController, setFirstnameController] = useState("");
   const [lastnameController, setLastnameController] = useState("");
   const [passwordController, setPasswordController] = useState("");
   const [errorMessage, setErrorMsg] = useState("");
- 
+
   const signUp = async () => {
     try {
       await axios
-        .post(apiUrl + "register", {
-          email: emailController,
-          firstname: firstnameController,
-          lastname: lastnameController,
-          password: passwordController,
-        })
+        .post(
+          apiUrl + "register",
+          {
+            email: emailController,
+            firstname: firstnameController,
+            lastname: lastnameController,
+            password: passwordController,
+          },
+          {
+            headers: {
+              "X-API-Key": apiKey,
+            },
+          }
+        )
         .then((response) => {
-          _authService.setCookie(response.data.token)
-          navigate('/')
+          _authService.setCookie(response.data.token);
+          navigate("/");
         });
     } catch (error: any) {
       setErrorMsg(error.message);

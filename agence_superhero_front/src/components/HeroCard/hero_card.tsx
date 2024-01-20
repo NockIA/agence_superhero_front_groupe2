@@ -22,8 +22,6 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
   UUID,
   isHero,
 }) => {
-  console.log(UUID);
-  
   return (
     <>
       {isHero ? (

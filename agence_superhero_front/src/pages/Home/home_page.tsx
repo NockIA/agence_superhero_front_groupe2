@@ -17,6 +17,7 @@ const HomePage = () => {
   const [searchContent, setSearchContent] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [activeTag, setActiveTag] = useState<string | null>(tags[0].title);
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [filteredSearchHeroes, setFilteredSearchHeroes] = useState<
     Array<HeroCardInterface>
   >([]);
@@ -64,6 +65,30 @@ const HomePage = () => {
       });
   }, []);
 
+  const sortHeroes = () => {
+    const sortedHeroes = [...heroes].sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+
+      if (sortOrder === 'asc') {
+        return nameA.localeCompare(nameB);
+      } else {
+        return nameB.localeCompare(nameA);
+      }
+    });
+
+    setHeroes(sortedHeroes);
+  };
+
+  const toggleSortOrder = () => {
+    const newOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+    setSortOrder(newOrder);
+  };
+
+  useEffect(() => {
+    sortHeroes();
+  }, [sortOrder]);
+
   return (
     <>
       <NavigationBar />
@@ -78,6 +103,9 @@ const HomePage = () => {
             value={searchContent}
             onChange={handleSearch}
           />
+          <button className="sort_btn" onClick={toggleSortOrder}>
+            {sortOrder === "asc" ? "Sort Desc" : "Sort Asc"}
+          </button>
         </div>
         <section className="columnContainer">
           <article className="rowContainer container_tags alignCenter">

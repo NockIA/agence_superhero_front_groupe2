@@ -40,3 +40,16 @@
   gap: 2rem;
   margin: 2rem 0;
 }
+
+.container_search_bar .sort_btn {
+  background-color: var(--dark_red);
+  border: none;
+  outline: none;
+  padding: 0.2rem 0.5rem;
+  color: var(--gold);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 10px;
+  border-radius: 3px;
+  font-weight: 900;
+  cursor: pointer;
+}

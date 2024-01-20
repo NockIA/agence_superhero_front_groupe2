@@ -42,8 +42,12 @@ const SingleHeroPage = () => {
       })
       .then((response: any) => {
         setHeroDatas(response.data[0]);
-        console.log("resp", response.data);
-
+        console.log("resp", response.data[0]);
+        console.log("city", response.data[0].city);
+        response.data[0].city.forEach((element : any) => {
+          console.log(element.name);
+          
+        });
         if (response.data[0].team) {
           axios
             .get(apiUrl + "getAllHeroOfOneTeams/" + response.data[0].team.id, {
@@ -294,7 +298,7 @@ const SingleHeroPage = () => {
           <span className="separation_section_3_top"></span>
           <h2>Protected Cities</h2>
           <article className="rowContainer container_team_members">
-            {heroDatas?.city && heroDatas.city.length > 0 && (
+            {heroDatas?.city&& (
               <SimpleSlider
                 slides={heroDatas?.city?.map((hero) => (
                   <HeroCard

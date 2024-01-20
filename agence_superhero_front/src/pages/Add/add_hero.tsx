@@ -93,7 +93,7 @@ const AddHeroPage: React.FC = () => {
           closeSlide={(continues: boolean | undefined) =>
             handleCloseSlide(setNextCitySlide, continues)
           }
-          getUrl="city"
+          getUrl="cities"
           postUrl="addCity"
           sentBackId={(id: number) => handleSetArrayId(setCityInfos, id)}
           renderCard={(hero: HeroCardInterface) => (

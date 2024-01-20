@@ -2,7 +2,7 @@ import "./hero_add.css";
 import "../../styles/index.css";
 import { useState } from "react";
 import axios from "axios";
-import { apiUrl } from "../../utils/api";
+import { apiKey, apiUrl } from "../../utils/api";
 import AuthService from "../../services/auth_services";
 import { useNavigate } from "react-router-dom";
 
@@ -68,6 +68,7 @@ export const HeroAdd: React.FC<HeroAddProps> = ({
             headers: {
               Authorization: "Bearer " + _authService.getCookie(),
               "Content-Type": "application/json",
+              "X-API-Key": apiKey,
             },
           }
         )
@@ -85,6 +86,7 @@ export const HeroAdd: React.FC<HeroAddProps> = ({
                 headers: {
                   Authorization: "Bearer " + _authService.getCookie(),
                   "Content-Type": "application/json",
+                  "X-API-Key": apiKey,
                 },
               }
             );
@@ -100,6 +102,7 @@ export const HeroAdd: React.FC<HeroAddProps> = ({
                 headers: {
                   Authorization: "Bearer " + _authService.getCookie(),
                   "Content-Type": "application/json",
+                  "X-API-Key": apiKey,
                 },
               }
             );
@@ -115,6 +118,7 @@ export const HeroAdd: React.FC<HeroAddProps> = ({
                 headers: {
                   Authorization: "Bearer " + _authService.getCookie(),
                   "Content-Type": "application/json",
+                  "X-API-Key": apiKey,
                 },
               }
             );
@@ -184,7 +188,7 @@ export const HeroAdd: React.FC<HeroAddProps> = ({
             onChange={(e) => setDescCtrl(e.target.value)}
           />
         </div>
-        {errMsg && <p>{errMsg}</p>}
+        {errMsg && <p className="error_add_hero">{errMsg}</p>}
         <button onClick={submitHero}>Submit</button>
       </article>
     </section>

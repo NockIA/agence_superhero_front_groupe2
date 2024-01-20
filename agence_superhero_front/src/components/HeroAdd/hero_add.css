@@ -114,3 +114,10 @@
       0 4%
     );
   }
+
+  .error_add_hero {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: var(--red_wine);
+    font-weight: 900;
+    text-align: center;
+  }

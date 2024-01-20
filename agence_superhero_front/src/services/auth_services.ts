@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiUrl } from "../utils/api";
+import { apiKey, apiUrl } from "../utils/api";
 
 class AuthService {
   setCookie(value: string) {
@@ -43,14 +43,12 @@ class AuthService {
         headers: {
           Authorization: "Bearer " + this.getCookie(),
           "Content-Type": "application/json",
+          "X-API-Key": apiKey,
         },
       })
       .then(() => {
         document.cookie = cookieString;
       })
-      .catch((error) => {
-        console.error("Logout error:", error);
-      });
   }
 }
 export default AuthService;

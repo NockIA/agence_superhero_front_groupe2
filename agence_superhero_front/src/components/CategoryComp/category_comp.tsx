@@ -4,13 +4,16 @@ import "./category_comp.css";
 import "../../styles/index.css";
 import { HeroCardInterface } from "../HeroCard/hero_card";
 import AuthService from "../../services/auth_services";
-import { apiUrl } from "../../utils/api";
+import { apiKey, apiUrl } from "../../utils/api";
 
 export interface CategoryCompProps {
   request: string;
   title: string;
   isActive: boolean;
-  onUpdateHeroes: (newHeroes: { data: Array<HeroCardInterface>; title: string }) => void;
+  onUpdateHeroes: (newHeroes: {
+    data: Array<HeroCardInterface>;
+    title: string;
+  }) => void;
 }
 
 export const CategoryComp: React.FC<CategoryCompProps> = ({
@@ -19,16 +22,19 @@ export const CategoryComp: React.FC<CategoryCompProps> = ({
   isActive,
   onUpdateHeroes,
 }) => {
-  const _authService = new AuthService;
+  const _authService = new AuthService();
   const handleClick = () => {
-    axios.get(apiUrl + request , {
-      headers : {
-        'Authorization': 'Bearer ' + _authService.getCookie(),
-        'Content-Type':'application/json'
-      }
-    }).then((response) => {
-      onUpdateHeroes({ data: response.data, title });
-    });
+    axios
+      .get(apiUrl + request, {
+        headers: {
+          Authorization: "Bearer " + _authService.getCookie(),
+          "Content-Type": "application/json",
+          "X-API-Key": apiKey,
+        },
+      })
+      .then((response) => {
+        onUpdateHeroes({ data: response.data, title });
+      });
   };
 
   return (

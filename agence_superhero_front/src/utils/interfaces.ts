@@ -43,3 +43,13 @@ export interface SingleHeroProps {
   powers: Array<HeroCardInterface>;
   city: Array<HeroCardInterface>;
 }
+
+export interface UserInfos {
+  firstname : string,
+  lastname: string,
+  email : string,
+  password : string,
+  linkProfileImage : string,
+  isAdmin :boolean,
+  id:number
+}

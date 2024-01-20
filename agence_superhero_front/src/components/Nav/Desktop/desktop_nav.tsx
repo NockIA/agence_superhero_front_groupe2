@@ -4,15 +4,33 @@ import "./desktop_nav.css";
 import AuthService from "../../../services/auth_services";
 import { useEffect, useState } from "react";
 import { navLinks, link } from "../../../utils/links";
+import axios from "axios";
+import { apiKey, apiUrl } from "../../../utils/api";
+import { UserInfos } from "../../../utils/interfaces";
 
 const DesktopNav: React.FC = () => {
   const _authService = new AuthService();
   const [isConnected, setIsConnected] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const [userInfos, setUserInfos] = useState<UserInfos | undefined>();
 
   useEffect(() => {
     if (_authService.getCookie()) {
+      axios
+        .get(apiUrl + "getMyInfo", {
+          headers: {
+            Authorization: "Bearer " + _authService.getCookie(),
+            "Content-Type": "application/json",
+            "X-API-Key": apiKey,
+          },
+        })
+        .then((response) => {
+          setUserInfos(response.data);
+        })
+        .catch((err) => {
+          console.error(err.message);
+        });
       setIsConnected(true);
     } else {
       setIsConnected(false);
@@ -50,11 +68,13 @@ const DesktopNav: React.FC = () => {
             </Link>
           </>
         )}
-        {isConnected && (
-          <a className="bnt_desktop_nav" onClick={Logout}>
-            Logout
-          </a>
-        )}
+        <Link to={"/profile"}>
+          <img
+            className="user_profile_picture"
+            src={userInfos?.linkProfileImage ?? "/no_image.png"}
+            alt="user_profile_picture"
+          />
+        </Link>
       </div>
     </nav>
   );

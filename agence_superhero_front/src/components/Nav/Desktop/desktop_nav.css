@@ -58,9 +58,10 @@
   border-radius: 5px;
   border: 2px solid var(--beige);
   text-decoration: none;
-  font-family: " Plus Jakarta Sans", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   color: black;
   font-weight: 600;
+  align-self: center;
 }
 
 .bnt_desktop_nav:hover {
@@ -69,3 +70,23 @@
   cursor: pointer;
   color: var(--beige);
 }
+
+/* ---------------- Images ---------------- */
+
+.user_profile_picture {
+  border-radius: 999px;
+  border: 2px solid var(--beige);
+  height: 2.5rem;
+  object-fit: cover;
+  width: 2.5rem;
+}
+
+.user_profile_picture:hover {
+ transform: scale(0.9);
+ transition: .5s;
+}
+
+.user_profile_picture:not(:hover) {
+  transform: scale(1);
+  transition: .5s;
+ }

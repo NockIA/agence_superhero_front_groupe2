@@ -13,8 +13,8 @@ export interface HeroCardInterface {
   UUID?: string;
   isHero?: boolean;
   tag?: string | null;
-  canModificate? : boolean,
-  planetLocationId?:number,
+  canModificate?: boolean;
+  planetLocationId?: number;
 }
 
 export const HeroCard: React.FC<HeroCardInterface> = ({
@@ -57,6 +57,10 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
         setPutUrl("updateGadget");
         setDelUrl("gadget");
         break;
+      default:
+        setGetUrl("undefined");
+        setPutUrl("undefined");
+        setDelUrl("undefined");
     }
   }, [tag]);
 
@@ -91,9 +95,9 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
           <Link
             to={`/edit-extra/${id}?getUrl=${encodeURIComponent(
               getUrl
-            )}&putUrl=${encodeURIComponent(
-              putUrl
-            )}&delUrl=${encodeURIComponent(delUrl)}`}
+            )}&putUrl=${encodeURIComponent(putUrl)}&delUrl=${encodeURIComponent(
+              delUrl
+            )}`}
             className="columnContainer container_hero_card"
           >
             <img src={linkImage ?? "/no_image.png"} alt="" />

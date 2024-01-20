@@ -22,7 +22,7 @@ const EditExtras: React.FC = () => {
   const putUrl = new URLSearchParams(location.search).get("putUrl");
   const delUrl = new URLSearchParams(location.search).get("delUrl");
   useEffect(() => {
-    if (getUrl && putUrl) {
+    if (getUrl && getUrl != "undefined") {
       axios
         .get(apiUrl + getUrl + "/" + id, {
           headers: {
@@ -41,6 +41,8 @@ const EditExtras: React.FC = () => {
         .catch((error) => {
           console.error("Error fetching data:", error);
         });
+    } else {
+      navigate('/');
     }
   }, [id, getUrl, location.pathname, putUrl]);
 

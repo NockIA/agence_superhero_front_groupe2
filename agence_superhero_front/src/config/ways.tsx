@@ -12,14 +12,14 @@ export const Ways = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/signup" element={<SignUpPage/>}/>
-        <Route path="/signIn" element={<SignInPage/>}/> 
-        <Route path="/" element={<HomePage/>}/> 
-        <Route path="/single-hero/*" element={<SingleHeroPage/>}/> 
-        <Route path="/create-hero" element={<AddHeroPage/>}/> 
-        <Route path="/edit-extra/:id" element={<EditExtras/>}/> 
-        <Route path="/profile" element={<ProfilePage/>}/> 
-        <Route path="*" element={<ErrorPage/>}/>
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/signIn" element={<SignInPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/single-hero/*" element={<SingleHeroPage />} />
+        <Route path="/create-hero" element={<AddHeroPage />} />
+        <Route path="/edit-extra/:id" element={<EditExtras />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );

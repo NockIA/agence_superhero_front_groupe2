@@ -7,7 +7,6 @@
   }
   .container_slider_global {
     flex-direction: row;
-   
   }
 }
 
@@ -53,17 +52,6 @@
   box-sizing: border-box;
 }
 
-
-
-.slide_add .img {
-  border-radius: 999px;
-  height: 15rem;
-  width: 15rem;
-  object-fit: cover;
-  border: 5px solid var(--beige);
-  box-shadow: 4px 4px 17px rgba(0, 0, 0, 0.467);
-}
-
 .container_slider_global {
   position: absolute;
   display: flex;
@@ -84,18 +72,43 @@
   text-align: center;
 }
 
-.container_separation_add_slider span {
-  background-color: var(--gold);
-  width: 100%;
-  height: 2px;
-}
-
 .container_slider_panel {
   gap: 2rem;
   width: 300px;
   font-family: "Plus Jakarta Sans", sans-serif;
   justify-content: center;
   color: var(--beige);
+}
+
+/* ---------------- Texts ---------------- */
+
+.container_slider_panel h1 {
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.container_slider_panel h5 {
+  text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ---------------- Others ---------------- */
+
+.slide_add .img {
+  border-radius: 999px;
+  height: 15rem;
+  width: 15rem;
+  object-fit: cover;
+  border: 5px solid var(--beige);
+  box-shadow: 4px 4px 17px rgba(0, 0, 0, 0.467);
+}
+
+.container_separation_add_slider span {
+  background-color: var(--gold);
+  width: 100%;
+  height: 2px;
 }
 
 .container_slider_panel input {
@@ -105,18 +118,6 @@
   border-bottom: 2px solid var(--gold);
   color: var(--beige);
   font-family: "Plus Jakarta Sans", sans-serif;
-}
-
-.container_slider_panel h1 {
-    font-size: 28px;
-  text-transform: uppercase;
-}
-
-.container_slider_panel h5 {
-  text-transform: uppercase;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .container_slider_panel button {
@@ -142,12 +143,12 @@
 }
 
 .container_slider_panel .select_menu {
-    background-color: var(--beige);
-    border: none;
-    outline: none;
-    color: var(--red_wine);
-    border-radius: 2px;
-    padding: 0.2rem 0.5rem;
-    cursor: pointer;
-    font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: var(--beige);
+  border: none;
+  outline: none;
+  color: var(--red_wine);
+  border-radius: 2px;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }

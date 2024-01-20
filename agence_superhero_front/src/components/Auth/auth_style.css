@@ -1,109 +1,118 @@
-@media screen and (max-width : 900px) {
-    .container_signup_form {
-        transform: translate(-50%, -35%);
-        padding: 5vh 1.5rem;
-    }
+/* ---------------- Responsive ---------------- */
+
+@media screen and (max-width: 900px) {
+  .container_signup_form {
+    transform: translate(-50%, -35%);
+    padding: 5vh 1.5rem;
+  }
 }
 
-@media screen and (min-width : 900px) {
-    .container_signup_form {
-        transform: translate(-50%, -50%);
-        padding: 5vh 3.5vw;
-    }
+@media screen and (min-width: 900px) {
+  .container_signup_form {
+    transform: translate(-50%, -50%);
+    padding: 5vh 3.5vw;
+  }
 }
+
+/* ---------------- Containers ---------------- */
 
 .container_signup_form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    gap: 2rem;
-    min-height: 550px;
-    max-width: 360px;
-    min-width: 300px;
-    background-color: var(--background_sign);
-    border-radius: 15px;
-    box-shadow: 0px 4px 50px 15px rgba(0, 0, 0, 0.25);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-.container_signup_form .title_form {
-    font-weight: 700;
-    font-size: 28px;
-}
-
-.container_signup_form .subtitle_form {
-    font-weight: 400;
-    font-size: 14px;
-    color: #6D6666;
-}
-
-.container_logo_sign {
-    width: fit-content;
-    padding: 0rem 1rem;
-    position: relative;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 5px;
-    background-color: var(--red_wine);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.form_logo {
-    position: absolute;
-    top: 3px;
-    width: 3rem;
-    height: 3rem;
-    object-fit: contain;
-    filter: contrast(0%) brightness(2000%);
-}
-
-.sign_input {
-    border-radius: 5px;
-    border: 1px solid #555;
-    padding: 0.8rem 1rem;
-    outline: none;
-    background: rgba(255, 255, 255, 0.50);
-}
-
-.sign_input_name {
-    width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  gap: 2rem;
+  min-height: 550px;
+  max-width: 360px;
+  min-width: 300px;
+  background-color: var(--background_sign);
+  border-radius: 15px;
+  box-shadow: 0px 4px 50px 15px rgba(0, 0, 0, 0.25);
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 .container_inputs_field {
-    box-sizing: border-box;
-    gap: 1rem;
+  box-sizing: border-box;
+  gap: 1rem;
 }
 
 .container_name {
-    gap: 1rem;
-    width: fit-content;
-
+  gap: 1rem;
+  width: fit-content;
 }
 
-.sign_button {
-    background-color: var(--red_wine);
-    outline: none;
-    border: none;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    color: white;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 600;
-    padding: 1rem;
-    border-radius: 5px;
+/* ---------------- Texts ---------------- */
+
+.container_signup_form .title_form {
+  font-weight: 700;
+  font-size: 28px;
 }
 
-.switch_sign_text {
-    font-weight: 500;
-    text-align: center;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+.container_signup_form .subtitle_form {
+  font-weight: 400;
+  font-size: 14px;
+  color: #6d6666;
 }
 
 .switch_sign_text .link_sign {
-    color: var(--red_wine);
-    font-weight: 800;
+  color: var(--red_wine);
+  font-weight: 800;
 }
 
 .text_sign_error {
-    color: var(--red_wine);
-    text-align: center;
+  color: var(--red_wine);
+  text-align: center;
+}
+
+.switch_sign_text {
+  font-weight: 500;
+  text-align: center;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* ---------------- Img ---------------- */
+
+.container_logo_sign {
+  width: fit-content;
+  padding: 0rem 1rem;
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 5px;
+  background-color: var(--red_wine);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.form_logo {
+  position: absolute;
+  top: 3px;
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  filter: contrast(0%) brightness(2000%);
+}
+
+/* ---------------- Others ---------------- */
+
+.sign_input {
+  border-radius: 5px;
+  border: 1px solid #555;
+  padding: 0.8rem 1rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.sign_input_name {
+  width: 50%;
+}
+
+.sign_button {
+  background-color: var(--red_wine);
+  outline: none;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: white;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+  padding: 1rem;
+  border-radius: 5px;
 }

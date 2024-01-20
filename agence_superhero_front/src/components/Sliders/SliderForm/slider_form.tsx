@@ -153,7 +153,7 @@ const Slider: React.FC<SliderProps> = ({
           <div
             className="rowContainer container_content_slider"
             style={{
-              transform: `translateX(-${currentIndex * 100}%)`,
+              transform: `translateX(-${currentIndex * 103}%)`,
             }}
           >
             {slides.map((slide, index) => (

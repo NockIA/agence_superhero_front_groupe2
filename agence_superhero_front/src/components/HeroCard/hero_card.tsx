@@ -30,6 +30,7 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
   const [getUrl, setGetUrl] = useState("");
   const [putUrl, setPutUrl] = useState("");
   const [delUrl, setDelUrl] = useState("");
+
   useEffect(() => {
     switch (tag) {
       case "All Cities":
@@ -64,6 +65,13 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
     }
   }, [tag]);
 
+  const truncateDescription = (text: string | undefined, maxLength: number) => {
+    if (text && text.length > maxLength) {
+      return text.slice(0, maxLength) + "...";
+    }
+    return text;
+  };
+
   return (
     <>
       {isHero ? (
@@ -74,9 +82,13 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
           <img src={linkImage ?? "/no_image.png"} alt="" />
           <div className="container_content_hero_card columnContainer">
             <i className="i1" />
-            <h2>{name}</h2>
+            <h2>{truncateDescription(name, 20)}</h2>
             <i className="i2" />
-            <h5>{(team || description) ?? "No Team"}</h5>
+            <h5>
+              {team || description
+                ? truncateDescription(description || team, 50)
+                : "No Team"}
+            </h5>
             <span className="separation"></span>
             <i className="i3" />
             <article className="rowContainer container_id_herocard">
@@ -103,9 +115,13 @@ export const HeroCard: React.FC<HeroCardInterface> = ({
             <img src={linkImage ?? "/no_image.png"} alt="" />
             <div className="container_content_hero_card columnContainer">
               <i className="i1" />
-              <h2>{name}</h2>
+              <h2>{truncateDescription(name, 15)}</h2>
               <i className="i2" />
-              <h5>{(team || description) ?? "Undefined"}</h5>
+              <h5>
+                {team || description
+                  ? truncateDescription(description || team, 50)
+                  : "No Team"}
+              </h5>
               <span className="separation"></span>
               <i className="i3" />
               <article className="rowContainer container_id_herocard">

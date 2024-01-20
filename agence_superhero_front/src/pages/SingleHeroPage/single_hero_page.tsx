@@ -333,7 +333,6 @@ const SingleHeroPage = () => {
               />
             )}
           </article>
-          <span className="separation_section_2_bottom"></span>
         </section>
       </main>
     </>

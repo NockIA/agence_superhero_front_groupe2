@@ -1,3 +1,5 @@
+/* ---------------- Containers ---------------- */
+
 .container_slider {
     width: 84.5vw;
     align-items: center;
@@ -26,6 +28,7 @@
     box-sizing: border-box;
 }
 
+/* ---------------- responsive ---------------- */
 
 @media (min-width: 768px) {
     .container_content_slider .slide {
@@ -33,6 +36,8 @@
         
     }
 }
+
+/* ---------------- Others ---------------- */
 
 .button_slider {
     background-color: var(--red_wine);

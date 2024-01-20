@@ -36,7 +36,7 @@ export interface SingleHeroProps {
   linkImage: string;
   originPlannet: PlanetProps;
   sexe: string;
-  canModificate : boolean;
+  canModificate: boolean;
   vehicle: number;
   team: PlanetProps;
   gadgets: Array<HeroCardInterface>;
@@ -45,11 +45,11 @@ export interface SingleHeroProps {
 }
 
 export interface UserInfos {
-  firstname : string,
-  lastname: string,
-  email : string,
-  password : string,
-  linkProfileImage : string,
-  isAdmin :boolean,
-  id:number
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+  linkProfileImage: string;
+  isAdmin: boolean;
+  id: number;
 }

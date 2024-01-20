@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../../../styles/index.css";
 import "./desktop_nav.css";
 import AuthService from "../../../services/auth_services";
@@ -11,7 +11,6 @@ import { UserInfos } from "../../../utils/interfaces";
 const DesktopNav: React.FC = () => {
   const _authService = new AuthService();
   const [isConnected, setIsConnected] = useState(false);
-  const navigate = useNavigate();
   const location = useLocation();
   const [userInfos, setUserInfos] = useState<UserInfos | undefined>();
 
@@ -37,10 +36,6 @@ const DesktopNav: React.FC = () => {
     }
   }, [_authService.getCookie()]);
 
-  const Logout = () => {
-    navigate("/signin");
-    _authService.deleteCookie();
-  };
   return (
     <nav className="container_desktop_nav rowContainer">
       <img className="desktop_logo_nav" src="/logo.png" alt="" />

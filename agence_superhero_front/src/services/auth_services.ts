@@ -31,24 +31,21 @@ class AuthService {
       }
     }
 
-    return null; // Return null if the cookie is not found
+    return null;
   }
 
   deleteCookie() {
     const cookieString =
       "jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=None; Secure";
 
-    axios
-      .post(apiUrl + "logout", {
-        headers: {
-          Authorization: "Bearer " + this.getCookie(),
-          "Content-Type": "application/json",
-          "X-API-Key": apiKey,
-        },
-      })
-      .then(() => {
-        document.cookie = cookieString;
-      })
+    axios.post(apiUrl + "logout", {
+      headers: {
+        Authorization: "Bearer " + this.getCookie(),
+        "Content-Type": "application/json",
+        "X-API-Key": apiKey,
+      },
+    });
+    document.cookie = cookieString;
   }
 }
 export default AuthService;

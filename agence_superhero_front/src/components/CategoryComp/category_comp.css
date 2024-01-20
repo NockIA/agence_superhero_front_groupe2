@@ -1,6 +1,10 @@
+/* ---------------- Containers ---------------- */
+
 .container_tag {
   cursor: pointer;
 }
+
+/* ---------------- Texts ---------------- */
 
 .container_tag .title_homepage {
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -18,6 +22,8 @@
 .is_not_Active_Tag {
   color: var(--white);
 }
+
+/* ---------------- Others ---------------- */
 
 .container_tag .underline_title {
   background-color: var(--gold);

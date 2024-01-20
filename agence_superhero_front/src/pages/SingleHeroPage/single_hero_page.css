@@ -30,6 +30,7 @@
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   position: relative;
+  flex-wrap: wrap;
 }
 
 .container_section_single {
@@ -63,13 +64,15 @@
 
 .container_team_members {
   gap: 2rem;
+
 }
 
 .container_team {
   gap: 3rem;
   position: relative;
   background-color: var(--bg_singlehero_section);
-
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   padding: 2rem;
 }
 

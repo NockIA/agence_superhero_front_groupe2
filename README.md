@@ -1,14 +1,19 @@
-# Projet PHP - API Laravel - Agence de super héros
-### Lancement serveur
-    - `cd agence_superhero_front/`
-    - `npm i`
-    - `npm run dev`
-## le serveur est lancé
 
-### Technologie
-    - `React.ts`
-    - `axios`
+# Agence de super héros - Front-end
+Projet scolaire visant à créer un site type "Wikipedia" permettant à l'utilisateur de créer ses superhéros, les modifer et supprimer, ainsi de de consulter les autres superhéros.
+
+> Ce dépôt ne contient que le front-end du site, il vous faudra cloner aussi le dépôt suivant : [back-end](https://github.com/NockIA/agence_superhero_front_groupe2/edit/main/README.md)
+
+### Lancement serveur
+    cd agence_superhero_front/
+    npm i
+    npm run dev
+>  Le serveur est lancé
+### Technologies
+    - React.ts
+    - Axios
+    - Vite
 ### Membres
-    - `Lucas B`
-    - `Kevin C`
-    - `Dorian M`
+ - Lucas B (Back-end)   
+ - Kevin C (Front-end)  
+ -  Dorian M (Database)
